@@ -10,14 +10,24 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as AccountIndexRouteImport } from './routes/account.index'
+import { Route as AccountAvatarRouteImport } from './routes/account.avatar'
+import { Route as AccountClosetRouteImport } from './routes/account.closet'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
+import { Route as ProfileUsernameRouteImport } from './routes/profile.$username'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CartRoute = CartRouteImport.update({
@@ -35,48 +45,114 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountIndexRoute = AccountIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountAvatarRoute = AccountAvatarRouteImport.update({
+  id: '/avatar',
+  path: '/avatar',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountClosetRoute = AccountClosetRouteImport.update({
+  id: '/closet',
+  path: '/closet',
+  getParentRoute: () => AccountRoute,
+} as any)
 const ProductSlugRoute = ProductSlugRouteImport.update({
   id: '/product/$slug',
   path: '/product/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileUsernameRoute = ProfileUsernameRouteImport.update({
+  id: '/profile/$username',
+  path: '/profile/$username',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/account': typeof AccountRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
+  '/account/avatar': typeof AccountAvatarRoute
+  '/account/closet': typeof AccountClosetRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/account/': typeof AccountIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
+  '/account/avatar': typeof AccountAvatarRoute
+  '/account/closet': typeof AccountClosetRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/account': typeof AccountIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/account': typeof AccountRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
   '/shop': typeof ShopRoute
+  '/account/avatar': typeof AccountAvatarRoute
+  '/account/closet': typeof AccountClosetRoute
   '/product/$slug': typeof ProductSlugRoute
+  '/profile/$username': typeof ProfileUsernameRoute
+  '/account/': typeof AccountIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/cart' | '/checkout' | '/shop' | '/product/$slug'
+  fullPaths:
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/account/avatar'
+    | '/account/closet'
+    | '/product/$slug'
+    | '/profile/$username'
+    | '/account/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cart' | '/checkout' | '/shop' | '/product/$slug'
-  id: '__root__' | '/' | '/cart' | '/checkout' | '/shop' | '/product/$slug'
+  to:
+    | '/'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/account/avatar'
+    | '/account/closet'
+    | '/product/$slug'
+    | '/profile/$username'
+    | '/account'
+  id:
+    | '__root__'
+    | '/'
+    | '/account'
+    | '/cart'
+    | '/checkout'
+    | '/shop'
+    | '/account/avatar'
+    | '/account/closet'
+    | '/product/$slug'
+    | '/profile/$username'
+    | '/account/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccountRoute: typeof AccountRouteWithChildren
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
   ShopRoute: typeof ShopRoute
   ProductSlugRoute: typeof ProductSlugRoute
+  ProfileUsernameRoute: typeof ProfileUsernameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -86,6 +162,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cart': {
@@ -109,6 +192,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/account/': {
+      id: '/account/'
+      path: '/'
+      fullPath: '/account/'
+      preLoaderRoute: typeof AccountIndexRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/avatar': {
+      id: '/account/avatar'
+      path: '/avatar'
+      fullPath: '/account/avatar'
+      preLoaderRoute: typeof AccountAvatarRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/closet': {
+      id: '/account/closet'
+      path: '/closet'
+      fullPath: '/account/closet'
+      preLoaderRoute: typeof AccountClosetRouteImport
+      parentRoute: typeof AccountRoute
+    }
     '/product/$slug': {
       id: '/product/$slug'
       path: '/product/$slug'
@@ -116,15 +220,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/$username': {
+      id: '/profile/$username'
+      path: '/profile/$username'
+      fullPath: '/profile/$username'
+      preLoaderRoute: typeof ProfileUsernameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface AccountRouteChildren {
+  AccountAvatarRoute: typeof AccountAvatarRoute
+  AccountClosetRoute: typeof AccountClosetRoute
+  AccountIndexRoute: typeof AccountIndexRoute
+}
+
+const AccountRouteChildren: AccountRouteChildren = {
+  AccountAvatarRoute: AccountAvatarRoute,
+  AccountClosetRoute: AccountClosetRoute,
+  AccountIndexRoute: AccountIndexRoute,
+}
+
+const AccountRouteWithChildren =
+  AccountRoute._addFileChildren(AccountRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccountRoute: AccountRouteWithChildren,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
   ShopRoute: ShopRoute,
   ProductSlugRoute: ProductSlugRoute,
+  ProfileUsernameRoute: ProfileUsernameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
