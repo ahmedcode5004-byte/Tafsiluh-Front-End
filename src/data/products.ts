@@ -185,7 +185,7 @@ export const PRODUCTS: Product[] = [
   {
     id: "p-solstice-crew",
     slug: "solstice-crew",
-    name: "Solstice Crew",
+    name: "Signature Crew",
     category: "sweatshirt",
     seasons: ["summer", "autumn"],
     price: 68,
@@ -194,9 +194,9 @@ export const PRODUCTS: Product[] = [
     fit: "oversized",
     fabric: "Midweight cotton terry",
     weight: "320 gsm",
-    description: "Our signature crew with the SOLSTICE wordmark — light enough for breezy summer nights.",
+    description: "Our signature crew with the تفصيله wordmark — light enough for breezy summer nights.",
     details: ["Signature print", "Oversized fit", "Midweight", "Unisex sizing"],
-    graphic: "SOLSTICE",
+    graphic: "تفصيله",
   },
   {
     id: "p-whiteout-crew",

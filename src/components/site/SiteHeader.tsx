@@ -44,7 +44,7 @@ export function SiteHeader() {
       <div className="container-page flex h-16 items-center justify-between gap-6">
         <div className="flex items-center gap-10">
           <Link to="/" className="font-display text-xl font-extrabold tracking-tight">
-            SOLSTICE<span className="text-season">.</span>
+            تفصيله<span className="text-season">.</span>
           </Link>
           <nav className="hidden items-center gap-7 md:flex" aria-label="Main">
             {NAV.map((n) => (
@@ -59,6 +59,14 @@ export function SiteHeader() {
                 {n.label}
               </Link>
             ))}
+            <Link
+              to="/design"
+              className="flex items-center gap-1.5 text-sm font-semibold text-foreground transition hover:text-season-deep"
+              activeProps={{ className: "!text-season-deep" }}
+            >
+              <span className="size-1.5 rounded-full bg-season" />
+              Design your own
+            </Link>
           </nav>
         </div>
 
@@ -133,6 +141,9 @@ export function SiteHeader() {
                   </Link>
                 </motion.div>
               ))}
+              <Link to="/design" className="block py-3 font-display text-2xl font-semibold">
+                Design your own
+              </Link>
               {user && (
                 <Link to="/account/closet" className="block py-3 font-display text-2xl font-semibold">
                   My closet

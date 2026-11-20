@@ -10,7 +10,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * SOLSTICE design system — editorial bone + ink, with a seasonal accent that
+ * تفصيله design system — editorial bone + ink, with a seasonal accent that
  * swaps via [data-season] (winter / summer / autumn).
  */
 

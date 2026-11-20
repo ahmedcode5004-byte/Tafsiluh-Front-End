@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 py-16 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <p className="font-display text-3xl font-extrabold">
-            SOLSTICE<span className="text-season">.</span>
+            تفصيله<span className="text-season">.</span>
           </p>
           <p className="mt-3 max-w-xs text-sm text-ink-muted">
             Tees, hoodies and sweatshirts for every season — sized to your body, saved to your closet.
@@ -32,6 +32,7 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-ink-muted">Members</p>
           <ul className="mt-4 space-y-2 text-sm">
+            <li><Link to="/design" className="hover:text-season">Design your own tee</Link></li>
             <li><Link to="/account" className="hover:text-season">My account</Link></li>
             <li><Link to="/account/avatar" className="hover:text-season">Avatar studio</Link></li>
             <li><Link to="/account/closet" className="hover:text-season">Digital closet</Link></li>
@@ -40,7 +41,7 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="container-page flex flex-col justify-between gap-2 border-t border-ink-foreground/10 py-6 text-xs text-ink-muted sm:flex-row">
-        <p>© 2026 Solstice Supply Co.</p>
+        <p>© 2026 تفصيله</p>
         <p>Made for every season.</p>
       </div>
     </footer>

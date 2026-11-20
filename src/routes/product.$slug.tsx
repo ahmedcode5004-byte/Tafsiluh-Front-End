@@ -23,10 +23,10 @@ export const Route = createFileRoute("/product/$slug")({
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: loaderData ? `${loaderData.name} — SOLSTICE` : "Product — SOLSTICE" },
-      { name: "description", content: loaderData?.description ?? "SOLSTICE product" },
-      { property: "og:title", content: loaderData ? `${loaderData.name} — SOLSTICE` : "Product — SOLSTICE" },
-      { property: "og:description", content: loaderData?.description ?? "SOLSTICE product" },
+      { title: loaderData ? `${loaderData.name} — تفصيله` : "Product — تفصيله" },
+      { name: "description", content: loaderData?.description ?? "تفصيله product" },
+      { property: "og:title", content: loaderData ? `${loaderData.name} — تفصيله` : "Product — تفصيله" },
+      { property: "og:description", content: loaderData?.description ?? "تفصيله product" },
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

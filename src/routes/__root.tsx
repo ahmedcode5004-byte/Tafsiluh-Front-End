@@ -18,6 +18,7 @@ import { useAuthStore } from "@/store/auth";
 import { useCartStore } from "@/store/cart";
 import { useOrdersStore } from "@/store/orders";
 import { useUIStore } from "@/store/ui";
+import { useDesignStore } from "@/store/design";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { AuthModal } from "@/components/site/AuthModal";
@@ -86,13 +87,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "SOLSTICE — Seasonal tees, hoodies & sweatshirts" },
+      { title: "تفصيله — Seasonal tees, hoodies & sweatshirts" },
       {
         name: "description",
         content: "Seasonal tees, hoodies and sweatshirts in XS–3XL, sized to your own avatar.",
       },
-      { name: "author", content: "Solstice Supply Co." },
-      { property: "og:title", content: "SOLSTICE — Seasonal tees, hoodies & sweatshirts" },
+      { name: "author", content: "تفصيله" },
+      { property: "og:title", content: "تفصيله — Seasonal tees, hoodies & sweatshirts" },
       { property: "og:description", content: "Seasonal tees, hoodies and sweatshirts sized to your own avatar." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -141,6 +142,7 @@ function RootComponent() {
       useAuthStore.persist.rehydrate(),
       useCartStore.persist.rehydrate(),
       useOrdersStore.persist.rehydrate(),
+      useDesignStore.persist.rehydrate(),
     ]).then(() => useUIStore.setState({ hydrated: true }));
   }, []);
 

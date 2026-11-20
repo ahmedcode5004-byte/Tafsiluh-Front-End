@@ -11,9 +11,9 @@ export const Route = createFileRoute("/shop")({
   validateSearch: (raw: Record<string, unknown>): ShopSearch => parseShopSearch(raw),
   head: () => ({
     meta: [
-      { title: "Shop all — SOLSTICE" },
+      { title: "Shop all — تفصيله" },
       { name: "description", content: "Browse tees, hoodies and sweatshirts by season and size, XS–3XL." },
-      { property: "og:title", content: "Shop all — SOLSTICE" },
+      { property: "og:title", content: "Shop all — تفصيله" },
       { property: "og:description", content: "Seasonal tees, hoodies and sweatshirts in every size." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

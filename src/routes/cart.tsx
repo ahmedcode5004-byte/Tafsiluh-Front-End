@@ -6,14 +6,14 @@ import { formatPrice, shippingFor } from "@/lib/format";
 import { tint } from "@/lib/color";
 import { confirmDanger, toastSuccess } from "@/lib/alerts";
 import { Button } from "@/components/ui/button";
-import { GarmentArt } from "@/components/shop/GarmentArt";
+import { DesignThumb } from "@/components/designer/DesignThumb";
 
 export const Route = createFileRoute("/cart")({
   head: () => ({
     meta: [
-      { title: "Your bag — SOLSTICE" },
+      { title: "Your bag — تفصيله" },
       { name: "description", content: "Review the pieces in your bag and their fit." },
-      { property: "og:title", content: "Your bag — SOLSTICE" },
+      { property: "og:title", content: "Your bag — تفصيله" },
       { property: "og:description", content: "Review the pieces in your bag." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -52,11 +52,11 @@ function CartPage() {
           {items.map((i) => (
             <li key={i.lineId} className="flex gap-4 py-5">
               <div className="size-24 shrink-0 rounded-2xl p-2" style={{ background: tint(i.color.hex, 24) }}>
-                <GarmentArt category={i.category} color={i.color.hex} graphic={i.graphic} />
+                <DesignThumb design={i.design} category={i.category} color={i.color.hex} graphic={i.graphic} />
               </div>
               <div className="flex-1">
                 <p className="font-semibold">{i.name}</p>
-                <p className="text-sm text-muted-foreground">{i.color.name} · Size {i.size} · {i.fit.mode === "avatar" ? "Avatar fit" : "Custom fit"}</p>
+                <p className="text-sm text-muted-foreground">{i.design ? "Your design · " : ""}{i.color.name} · Size {i.size} · {i.fit.mode === "avatar" ? "Avatar fit" : "Custom fit"}</p>
                 <div className="mt-3 flex items-center gap-3">
                   <button type="button" aria-label="Decrease" className="grid size-8 place-items-center rounded-full border" onClick={() => (i.quantity === 1 ? void removeLine(i.lineId, i.name) : decrement(i.lineId))}><Minus className="size-3" /></button>
                   <span className="w-5 text-center font-semibold">{i.quantity}</span>

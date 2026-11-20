@@ -2,7 +2,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import { Ruler, UserRound } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import type { Category, Measurements, ProductColor, Size } from "@/types";
+import type { Category, CustomDesign, Measurements, ProductColor, Size } from "@/types";
 import { useAuthStore } from "@/store/auth";
 import { useCartStore } from "@/store/cart";
 import { useUIStore } from "@/store/ui";
@@ -13,7 +13,7 @@ import { toastSuccess } from "@/lib/alerts";
 import { Button } from "@/components/ui/button";
 import { Modal } from "@/components/site/Modal";
 import { MeasurementFields } from "@/components/avatar/MeasurementFields";
-import { GarmentArt } from "./GarmentArt";
+import { DesignThumb } from "@/components/designer/DesignThumb";
 import { cn } from "@/lib/utils";
 
 interface Summary {
@@ -24,6 +24,7 @@ interface Summary {
   price: number;
   color: ProductColor;
   graphic?: string | undefined;
+  design?: CustomDesign | undefined;
   size: Size;
   quantity: number;
 }
@@ -117,7 +118,7 @@ export function FitModal() {
         <div className="p-6 sm:p-9">
           <div className="flex items-center gap-4 pr-10">
             <div className="size-20 shrink-0 rounded-2xl p-2" style={{ background: tint(summary.color.hex, 26) }}>
-              <GarmentArt category={summary.category} color={summary.color.hex} graphic={summary.graphic} />
+              <DesignThumb design={summary.design} category={summary.category} color={summary.color.hex} graphic={summary.graphic} />
             </div>
             <div className="min-w-0">
               <p className="eyebrow text-season-deep">Smart sizing</p>

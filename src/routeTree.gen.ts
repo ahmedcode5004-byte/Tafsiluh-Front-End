@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as CartRouteImport } from './routes/cart'
 import { Route as CheckoutRouteImport } from './routes/checkout'
+import { Route as DesignRouteImport } from './routes/design'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as AccountIndexRouteImport } from './routes/account.index'
 import { Route as AccountAvatarRouteImport } from './routes/account.avatar'
@@ -38,6 +39,11 @@ const CartRoute = CartRouteImport.update({
 const CheckoutRoute = CheckoutRouteImport.update({
   id: '/checkout',
   path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DesignRoute = DesignRouteImport.update({
+  id: '/design',
+  path: '/design',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -76,6 +82,7 @@ export interface FileRoutesByFullPath {
   '/account': typeof AccountRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/design': typeof DesignRoute
   '/shop': typeof ShopRoute
   '/account/avatar': typeof AccountAvatarRoute
   '/account/closet': typeof AccountClosetRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/design': typeof DesignRoute
   '/shop': typeof ShopRoute
   '/account/avatar': typeof AccountAvatarRoute
   '/account/closet': typeof AccountClosetRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   '/account': typeof AccountRouteWithChildren
   '/cart': typeof CartRoute
   '/checkout': typeof CheckoutRoute
+  '/design': typeof DesignRoute
   '/shop': typeof ShopRoute
   '/account/avatar': typeof AccountAvatarRoute
   '/account/closet': typeof AccountClosetRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/cart'
     | '/checkout'
+    | '/design'
     | '/shop'
     | '/account/avatar'
     | '/account/closet'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cart'
     | '/checkout'
+    | '/design'
     | '/shop'
     | '/account/avatar'
     | '/account/closet'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '/account'
     | '/cart'
     | '/checkout'
+    | '/design'
     | '/shop'
     | '/account/avatar'
     | '/account/closet'
@@ -150,6 +162,7 @@ export interface RootRouteChildren {
   AccountRoute: typeof AccountRouteWithChildren
   CartRoute: typeof CartRoute
   CheckoutRoute: typeof CheckoutRoute
+  DesignRoute: typeof DesignRoute
   ShopRoute: typeof ShopRoute
   ProductSlugRoute: typeof ProductSlugRoute
   ProfileUsernameRoute: typeof ProfileUsernameRoute
@@ -183,6 +196,13 @@ declare module '@tanstack/react-router' {
       path: '/checkout'
       fullPath: '/checkout'
       preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/design': {
+      id: '/design'
+      path: '/design'
+      fullPath: '/design'
+      preLoaderRoute: typeof DesignRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -250,6 +270,7 @@ const rootRouteChildren: RootRouteChildren = {
   AccountRoute: AccountRouteWithChildren,
   CartRoute: CartRoute,
   CheckoutRoute: CheckoutRoute,
+  DesignRoute: DesignRoute,
   ShopRoute: ShopRoute,
   ProductSlugRoute: ProductSlugRoute,
   ProfileUsernameRoute: ProfileUsernameRoute,

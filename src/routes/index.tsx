@@ -13,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { ProductCard } from "@/components/shop/ProductCard";
 import { GarmentArt } from "@/components/shop/GarmentArt";
 import { AvatarFigure, type AvatarGarment } from "@/components/avatar/AvatarFigure";
+import { TeeCanvas } from "@/components/designer/TeeCanvas";
+import type { DesignLayer } from "@/types";
 import { DEFAULT_LOOK } from "@/components/avatar/looks";
 import { DEFAULT_MEASUREMENTS } from "@/lib/sizing";
 import heroWinter from "@/assets/hero-winter.jpg";
@@ -22,12 +24,12 @@ import heroAutumn from "@/assets/hero-autumn.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "SOLSTICE — Tees, hoodies & sweatshirts for every season" },
+      { title: "تفصيله — Tees, hoodies & sweatshirts for every season" },
       {
         name: "description",
         content: "Shop winter, summer and autumn edits of tees, hoodies and sweatshirts in XS–3XL, sized to your own avatar.",
       },
-      { property: "og:title", content: "SOLSTICE — Tees, hoodies & sweatshirts for every season" },
+      { property: "og:title", content: "تفصيله — Tees, hoodies & sweatshirts for every season" },
       {
         property: "og:description",
         content: "Seasonal essentials in every size, fitted to your avatar and saved to your digital closet.",
@@ -56,6 +58,7 @@ function HomePage() {
     <>
       <Hero />
       <QuickFilters />
+      <DesignInvite />
 
       <section className="container-page mt-24">
         <div className="flex flex-wrap items-end justify-between gap-4">
@@ -181,10 +184,50 @@ function Hero() {
 }
 
 const QUICK: Array<{ category: Category; color: string; blurb: string }> = [
-  { category: "tshirt", color: "#E7AE47", blurb: "From 34" },
-  { category: "hoodie", color: "#B9CADA", blurb: "From 78" },
-  { category: "sweatshirt", color: "#A4502C", blurb: "From 68" },
+  { category: "tshirt", color: "#E7AE47", blurb: "From $34" },
+  { category: "hoodie", color: "#B9CADA", blurb: "From $78" },
+  { category: "sweatshirt", color: "#A4502C", blurb: "From $68" },
 ];
+
+const SAMPLE_DESIGN: DesignLayer[] = [
+  { id: "s1", kind: "shape", src: "sun", color: "#F2B23A", x: 50, y: 34, size: 62, rotation: 0 },
+  { id: "s2", kind: "shape", src: "mountain", color: "#FFFFFF", x: 50, y: 60, size: 86, rotation: 0 },
+  { id: "s3", kind: "shape", src: "star", color: "#F2A7B8", x: 80, y: 14, size: 18, rotation: 12 },
+];
+
+function DesignInvite() {
+  return (
+    <section className="container-page mt-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="grid items-center gap-6 overflow-hidden rounded-[2rem] bg-ink p-8 text-ink-foreground md:grid-cols-[1fr_280px] md:p-12"
+      >
+        <div>
+          <p className="eyebrow text-season">New · Design studio</p>
+          <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Design your own tee</h2>
+          <p className="mt-3 max-w-md text-ink-foreground/75">
+            Choose a colour, add graphics or upload your own photo, drag it into place — and we size it to your avatar.
+          </p>
+          <Button asChild variant="season" size="xl" className="mt-7">
+            <Link to="/design">
+              Start designing <ArrowRight />
+            </Link>
+          </Button>
+        </div>
+        <motion.div
+          className="mx-auto w-56 md:w-full"
+          animate={{ rotate: [-3, 3, -3] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <TeeCanvas baseColor="#1F2A44" layers={SAMPLE_DESIGN} />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
 
 function QuickFilters() {
   return (
@@ -204,7 +247,7 @@ function QuickFilters() {
             >
               <div>
                 <p className="font-display text-2xl font-semibold">{CATEGORY_LABELS[q.category]}</p>
-                <p className="mt-1 text-sm text-muted-foreground">${q.blurb} · XS–3XL</p>
+                <p className="mt-1 text-sm text-muted-foreground">{q.blurb} · XS–3XL</p>
               </div>
               <div className="size-20 shrink-0 transition duration-500 group-hover:rotate-[-6deg] group-hover:scale-110">
                 <GarmentArt category={q.category} color={q.color} />
@@ -241,7 +284,7 @@ function QuickFilters() {
 
 const SHOWCASE: AvatarGarment[] = [
   { key: "a", category: "hoodie", color: { name: "Glacier", hex: "#B9CADA" } },
-  { key: "b", category: "tshirt", color: { name: "Sun", hex: "#E7AE47" }, graphic: "SOLSTICE" },
+  { key: "b", category: "tshirt", color: { name: "Sun", hex: "#E7AE47" }, graphic: "تفصيله" },
   { key: "c", category: "sweatshirt", color: { name: "Rust", hex: "#A4502C" } },
 ];
 const SHOWCASE_BODIES = [

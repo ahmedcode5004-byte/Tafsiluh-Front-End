@@ -70,6 +70,28 @@ export interface FitChoice {
   measurements: Measurements;
 }
 
+export type DesignLayerKind = "shape" | "image";
+
+/** One graphic placed on a custom tee. Position and size are % of the print area. */
+export interface DesignLayer {
+  id: string;
+  kind: DesignLayerKind;
+  /** Shape id from the graphics library, or an image data URL for uploads. */
+  src: string;
+  /** Fill colour for shapes. */
+  color?: string;
+  x: number;
+  y: number;
+  size: number;
+  rotation: number;
+}
+
+export interface CustomDesign {
+  id: string;
+  baseColor: ProductColor;
+  layers: DesignLayer[];
+}
+
 export interface CartItem {
   lineId: string;
   productId: string;
@@ -82,6 +104,7 @@ export interface CartItem {
   quantity: number;
   fit: FitChoice;
   graphic?: string;
+  design?: CustomDesign;
 }
 
 export type OrderStatus = "placed" | "shipped" | "out_for_delivery" | "delivered";
@@ -120,6 +143,7 @@ export interface ClosetItem {
   color: ProductColor;
   size: Size;
   graphic?: string;
+  design?: CustomDesign;
   unlockedAt: string;
 }
 

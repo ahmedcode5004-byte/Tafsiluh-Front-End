@@ -6,9 +6,9 @@ import { RequireAuth } from "@/components/site/RequireAuth";
 export const Route = createFileRoute("/account")({
   head: () => ({
     meta: [
-      { title: "My account — SOLSTICE" },
-      { name: "description", content: "Your orders, avatar and digital closet at SOLSTICE." },
-      { property: "og:title", content: "My account — SOLSTICE" },
+      { title: "My account — تفصيله" },
+      { name: "description", content: "Your orders, avatar and digital closet at تفصيله." },
+      { property: "og:title", content: "My account — تفصيله" },
       { property: "og:description", content: "Your orders, avatar and digital closet." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -66,3 +66,26 @@ export async function confirmDanger(title: string, text: string, confirmText = "
   });
   return res.isConfirmed;
 }
+
+/** Two-button prompt; resolves true when the user picks the main action. */
+export async function confirmAction(
+  title: string,
+  text: string,
+  confirmText: string,
+  cancelText = "Not now",
+  icon: "info" | "success" | "question" = "info",
+) {
+  const Swal = await load();
+  const res = await Swal.fire({
+    icon,
+    title,
+    text,
+    showCancelButton: true,
+    confirmButtonText: confirmText,
+    cancelButtonText: cancelText,
+    reverseButtons: true,
+    buttonsStyling: false,
+    customClass,
+  });
+  return res.isConfirmed;
+}

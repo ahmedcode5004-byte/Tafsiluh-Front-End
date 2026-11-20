@@ -9,7 +9,7 @@ import { DEFAULT_MEASUREMENTS } from "@/lib/sizing";
 import { Button } from "@/components/ui/button";
 import { AvatarFigure } from "@/components/avatar/AvatarFigure";
 import { DEFAULT_LOOK } from "@/components/avatar/looks";
-import { GarmentArt } from "@/components/shop/GarmentArt";
+import { DesignThumb } from "@/components/designer/DesignThumb";
 
 export const Route = createFileRoute("/account/closet")({
   component: ClosetPage,
@@ -55,7 +55,7 @@ function ClosetPage() {
             return (
               <li key={c.key} className="rounded-3xl bg-card p-4 ring-1 ring-border">
                 <div className="aspect-square rounded-2xl p-4" style={{ background: tint(c.color.hex, 24) }}>
-                  <GarmentArt category={c.category} color={c.color.hex} graphic={c.graphic} />
+                  <DesignThumb design={c.design} category={c.category} color={c.color.hex} graphic={c.graphic} />
                 </div>
                 <p className="mt-3 font-semibold">{c.name}</p>
                 <p className="text-xs text-muted-foreground">{c.color.name} · {c.size} · unlocked {formatDate(c.unlockedAt)}</p>

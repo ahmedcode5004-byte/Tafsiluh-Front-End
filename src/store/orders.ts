@@ -20,7 +20,7 @@ export function closetFromOrders(orders: Order[]): ClosetItem[] {
   for (const order of orders) {
     if (order.status !== "delivered") continue;
     for (const item of order.items) {
-      const key = closetKey(item.productId, item.color.name);
+      const key = item.design ? `custom|${item.design.id}` : closetKey(item.productId, item.color.name);
       if (map.has(key)) continue;
       const entry: ClosetItem = {
         key,
@@ -33,6 +33,7 @@ export function closetFromOrders(orders: Order[]): ClosetItem[] {
         unlockedAt: order.deliveredAt ?? order.createdAt,
       };
       if (item.graphic) entry.graphic = item.graphic;
+      if (item.design) entry.design = item.design;
       map.set(key, entry);
     }
   }

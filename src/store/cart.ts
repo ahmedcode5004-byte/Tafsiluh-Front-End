@@ -6,10 +6,12 @@ import { browserStorage } from "./storage";
 
 export type NewCartItem = Omit<CartItem, "lineId">;
 
-/** Lines merge when product, colour, size and fit (including custom measurements) all match. */
-export function lineKey(item: Pick<CartItem, "productId" | "color" | "size" | "fit">) {
+/** Lines merge when product, colour, size, fit (including custom measurements) and design all match. */
+export function lineKey(item: Pick<CartItem, "productId" | "color" | "size" | "fit" | "design">) {
   const fit = item.fit.mode === "custom" ? `custom:${JSON.stringify(item.fit.measurements)}` : "avatar";
-  return `${item.productId}|${item.color.name}|${item.size}|${fit}`;
+  // Each custom design is its own line; only the same design merges.
+  const design = item.design ? `|design:${item.design.id}` : "";
+  return `${item.productId}|${item.color.name}|${item.size}|${fit}${design}`;
 }
 
 export function mergeIntoCart(items: CartItem[], incoming: NewCartItem): CartItem[] {

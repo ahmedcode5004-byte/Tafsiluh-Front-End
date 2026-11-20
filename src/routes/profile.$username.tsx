@@ -10,7 +10,7 @@ import { formatDate } from "@/lib/format";
 import { DEFAULT_MEASUREMENTS } from "@/lib/sizing";
 import { AvatarFigure } from "@/components/avatar/AvatarFigure";
 import { DEFAULT_LOOK } from "@/components/avatar/looks";
-import { GarmentArt } from "@/components/shop/GarmentArt";
+import { DesignThumb } from "@/components/designer/DesignThumb";
 import type { PublicProfile } from "@/types";
 
 const profileQuery = (username: string) =>
@@ -24,9 +24,9 @@ export const Route = createFileRoute("/profile/$username")({
   loader: ({ context, params }) => context.queryClient.ensureQueryData(profileQuery(params.username)),
   head: ({ params }) => ({
     meta: [
-      { title: `@${params.username}'s closet — SOLSTICE` },
-      { name: "description", content: `See @${params.username}'s avatar and unlocked SOLSTICE wardrobe.` },
-      { property: "og:title", content: `@${params.username}'s closet — SOLSTICE` },
+      { title: `@${params.username}'s closet — تفصيله` },
+      { name: "description", content: `See @${params.username}'s avatar and unlocked تفصيله wardrobe.` },
+      { property: "og:title", content: `@${params.username}'s closet — تفصيله` },
       { property: "og:description", content: `See @${params.username}'s avatar and unlocked wardrobe.` },
       { property: "og:type", content: "profile" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -101,12 +101,16 @@ function ProfileView({ profile, isOwn }: { profile: PublicProfile; isOwn: boolea
                   className="w-full rounded-3xl bg-card p-4 text-left ring-1 ring-border transition hover:-translate-y-1 data-[active=true]:ring-2 data-[active=true]:ring-foreground"
                 >
                   <div className="aspect-square rounded-2xl p-4" style={{ background: tint(c.color.hex, 24) }}>
-                    <GarmentArt category={c.category} color={c.color.hex} graphic={c.graphic} />
+                    <DesignThumb design={c.design} category={c.category} color={c.color.hex} graphic={c.graphic} />
                   </div>
                   <p className="mt-3 font-semibold">{c.name}</p>
                   <p className="text-xs text-muted-foreground">{c.color.name} · {c.size}</p>
                 </button>
-                <Link to="/product/$slug" params={{ slug: c.slug }} className="mt-2 block text-xs font-semibold underline">Shop this piece</Link>
+                {c.design ? (
+                  <Link to="/design" className="mt-2 block text-xs font-semibold underline">Design your own</Link>
+                ) : (
+                  <Link to="/product/$slug" params={{ slug: c.slug }} className="mt-2 block text-xs font-semibold underline">Shop this piece</Link>
+                )}
               </li>
             ))}
           </ul>

@@ -13,10 +13,10 @@ import type { PaymentMethod } from "@/types";
 export const Route = createFileRoute("/checkout")({
   head: () => ({
     meta: [
-      { title: "Checkout — SOLSTICE" },
-      { name: "description", content: "Complete your SOLSTICE order." },
-      { property: "og:title", content: "Checkout — SOLSTICE" },
-      { property: "og:description", content: "Complete your SOLSTICE order." },
+      { title: "Checkout — تفصيله" },
+      { name: "description", content: "Complete your تفصيله order." },
+      { property: "og:title", content: "Checkout — تفصيله" },
+      { property: "og:description", content: "Complete your تفصيله order." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
