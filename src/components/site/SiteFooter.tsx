@@ -10,7 +10,8 @@ export function SiteFooter() {
             تفصيله<span className="text-season">.</span>
           </p>
           <p className="mt-3 max-w-xs text-sm text-ink-muted">
-            Tees, hoodies and sweatshirts for every season — sized to your body, saved to your closet.
+            Tees, hoodies and sweatshirts for every season — sized to your body, saved to your
+            closet.
           </p>
         </div>
         <FooterCol
@@ -32,11 +33,35 @@ export function SiteFooter() {
         <div>
           <p className="eyebrow text-ink-muted">Members</p>
           <ul className="mt-4 space-y-2 text-sm">
-            <li><Link to="/design" className="hover:text-season">Design your own tee</Link></li>
-            <li><Link to="/account" className="hover:text-season">My account</Link></li>
-            <li><Link to="/account/avatar" className="hover:text-season">Avatar studio</Link></li>
-            <li><Link to="/account/closet" className="hover:text-season">Digital closet</Link></li>
-            <li><Link to="/profile/$username" params={{ username: "lina.m" }} className="hover:text-season">Community closets</Link></li>
+            <li>
+              <Link to="/design" className="hover:text-season">
+                Design your own tee
+              </Link>
+            </li>
+            <li>
+              <Link to="/account" className="hover:text-season">
+                My account
+              </Link>
+            </li>
+            <li>
+              <Link to="/account/avatar" className="hover:text-season">
+                Avatar studio
+              </Link>
+            </li>
+            <li>
+              <Link to="/account/closet" className="hover:text-season">
+                Digital closet
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/profile/$username"
+                params={{ username: "lina.m" }}
+                className="hover:text-season"
+              >
+                Community closets
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

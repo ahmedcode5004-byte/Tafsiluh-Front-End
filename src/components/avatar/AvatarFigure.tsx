@@ -1,8 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useId, useMemo } from "react";
-import type { AvatarLook, Category, Measurements, ProductColor } from "@/types";
+import type { AvatarLook, Category, CustomDesign, Measurements, ProductColor } from "@/types";
 import { isLight, shade } from "@/lib/color";
 import { cn } from "@/lib/utils";
+import { SHAPE_BY_ID } from "@/data/designer";
 import { VIEW_H, VIEW_W, buildBody, buildGarment, type BodyGeometry } from "./geometry";
 
 export interface AvatarGarment {
@@ -10,12 +11,14 @@ export interface AvatarGarment {
   category: Category;
   color: ProductColor;
   graphic?: string | undefined;
+  design?: CustomDesign | undefined;
 }
 
 interface Props {
   measurements: Measurements;
   look: AvatarLook;
   garment?: AvatarGarment | null;
+  garmentView?: "front" | "back" | "left-sleeve" | "right-sleeve";
   className?: string;
   idle?: boolean;
   label?: string;
@@ -28,7 +31,15 @@ const UNDERSHIRT: AvatarGarment = {
   color: { name: "Base", hex: "#D9D4CA" },
 };
 
-export function AvatarFigure({ measurements, look, garment, className, idle = true, label }: Props) {
+export function AvatarFigure({
+  measurements,
+  look,
+  garment,
+  garmentView = "front",
+  className,
+  idle = true,
+  label,
+}: Props) {
   const g = useMemo(() => buildBody(measurements), [measurements]);
   const worn = garment ?? UNDERSHIRT;
   const gid = useId().replace(/:/g, "");
@@ -57,17 +68,39 @@ export function AvatarFigure({ measurements, look, garment, className, idle = tr
 
       <motion.g
         animate={idle ? { y: [0, -3, 0] } : { y: 0 }}
-        transition={idle ? { duration: 3.6, repeat: Infinity, ease: "easeInOut" } : { duration: 0.3 }}
+        transition={
+          idle ? { duration: 3.6, repeat: Infinity, ease: "easeInOut" } : { duration: 0.3 }
+        }
       >
         <HairBack g={g} look={look} />
 
         {/* skin */}
-        <motion.path initial={false} animate={{ d: g.armL }} transition={morph} fill={`url(#skin-${gid})`} />
-        <motion.path initial={false} animate={{ d: g.armR }} transition={morph} fill={`url(#skin-${gid})`} />
-        <motion.path initial={false} animate={{ d: g.body }} transition={morph} fill={`url(#skin-${gid})`} />
+        <motion.path
+          initial={false}
+          animate={{ d: g.armL }}
+          transition={morph}
+          fill={`url(#skin-${gid})`}
+        />
+        <motion.path
+          initial={false}
+          animate={{ d: g.armR }}
+          transition={morph}
+          fill={`url(#skin-${gid})`}
+        />
+        <motion.path
+          initial={false}
+          animate={{ d: g.body }}
+          transition={morph}
+          fill={`url(#skin-${gid})`}
+        />
 
         {/* base layer */}
-        <motion.path initial={false} animate={{ d: g.pants }} transition={morph} fill="var(--avatar-pants)" />
+        <motion.path
+          initial={false}
+          animate={{ d: g.pants }}
+          transition={morph}
+          fill="var(--avatar-pants)"
+        />
         <Shoes g={g} />
 
         <AnimatePresence mode="popLayout" initial={false}>
@@ -79,7 +112,7 @@ export function AvatarFigure({ measurements, look, garment, className, idle = tr
             transition={{ type: "spring", stiffness: 160, damping: 18 }}
             style={{ transformOrigin: "160px 260px" }}
           >
-            <Garment g={g} garment={worn} />
+            <Garment g={g} garment={worn} garmentView={garmentView} />
           </motion.g>
         </AnimatePresence>
 
@@ -103,7 +136,15 @@ export function AvatarFigure({ measurements, look, garment, className, idle = tr
   );
 }
 
-function Garment({ g, garment }: { g: BodyGeometry; garment: AvatarGarment }) {
+function Garment({
+  g,
+  garment,
+  garmentView,
+}: {
+  g: BodyGeometry;
+  garment: AvatarGarment;
+  garmentView: "front" | "back" | "left-sleeve" | "right-sleeve";
+}) {
   const geo = useMemo(() => buildGarment(g, garment.category), [g, garment.category]);
   const base = garment.color.hex;
   const dark = shade(base, 80);
@@ -112,11 +153,31 @@ function Garment({ g, garment }: { g: BodyGeometry; garment: AvatarGarment }) {
   return (
     <g>
       {geo.hood && (
-        <motion.path initial={false} animate={{ d: geo.hood }} transition={morph} style={{ fill: dark }} />
+        <motion.path
+          initial={false}
+          animate={{ d: geo.hood }}
+          transition={morph}
+          style={{ fill: dark }}
+        />
       )}
-      <motion.path initial={false} animate={{ d: geo.sleeveL }} transition={morph} style={{ fill: base }} />
-      <motion.path initial={false} animate={{ d: geo.sleeveR }} transition={morph} style={{ fill: base }} />
-      <motion.path initial={false} animate={{ d: geo.torso }} transition={morph} style={{ fill: base }} />
+      <motion.path
+        initial={false}
+        animate={{ d: geo.sleeveL }}
+        transition={morph}
+        style={{ fill: base }}
+      />
+      <motion.path
+        initial={false}
+        animate={{ d: geo.sleeveR }}
+        transition={morph}
+        style={{ fill: base }}
+      />
+      <motion.path
+        initial={false}
+        animate={{ d: geo.torso }}
+        transition={morph}
+        style={{ fill: base }}
+      />
       <motion.path
         initial={false}
         animate={{ d: geo.neckline }}
@@ -159,9 +220,88 @@ function Garment({ g, garment }: { g: BodyGeometry; garment: AvatarGarment }) {
           />
         </g>
       )}
-      {geo.cuffR && <motion.path initial={false} animate={{ d: geo.cuffR }} transition={morph} style={{ fill: dark }} />}
-      {geo.cuffL && <motion.path initial={false} animate={{ d: geo.cuffL }} transition={morph} style={{ fill: dark }} />}
-      {garment.graphic && (
+      {geo.cuffR && (
+        <motion.path
+          initial={false}
+          animate={{ d: geo.cuffR }}
+          transition={morph}
+          style={{ fill: dark }}
+        />
+      )}
+      {geo.cuffL && (
+        <motion.path
+          initial={false}
+          animate={{ d: geo.cuffL }}
+          transition={morph}
+          style={{ fill: dark }}
+        />
+      )}
+      {(garmentView === "front" || garmentView === "back") &&
+        garment.design?.layers
+          .filter((layer) => (layer.zone ?? "front") === garmentView)
+          .map((layer) => {
+            const chestWidth = geo.chestHalf * 1.35;
+            const cx = 160 + ((layer.x - 50) / 100) * chestWidth * 1.4;
+            const cy = g.chestY + 22 + ((layer.y - 50) / 100) * geo.chestHalf * 0.9;
+            const size = Math.max(8, (layer.size / 100) * chestWidth * 0.9);
+            const shape = layer.kind === "shape" ? SHAPE_BY_ID[layer.src] : null;
+
+            return (
+              <g
+                key={layer.id}
+                transform={`translate(${cx} ${cy}) rotate(${layer.rotation}) scale(${size / 100})`}
+                pointerEvents="none"
+              >
+                {layer.kind === "image" ? (
+                  <image
+                    href={layer.src}
+                    x={-50}
+                    y={-50}
+                    width={100}
+                    height={100}
+                    preserveAspectRatio="xMidYMid meet"
+                  />
+                ) : shape ? (
+                  <path d={shape.d} fillRule={shape.rule} fill={layer.color ?? "#FFFFFF"} />
+                ) : null}
+              </g>
+            );
+          })}
+
+      {garment.category !== "tshirt" &&
+        (garmentView === "left-sleeve" || garmentView === "right-sleeve") &&
+        garment.design?.layers
+          .filter((layer) => layer.zone === garmentView)
+          .map((layer) => {
+            const left = garmentView === "left-sleeve";
+            const cx = left ? g.shoulderJoint[0] - 18 : 320 - (g.shoulderJoint[0] - 18);
+            const cy = g.shoulderY + (g.elbow[1] - g.shoulderY) * 0.38;
+            const size = Math.max(7, (layer.size / 100) * 34);
+            const shape = layer.kind === "shape" ? SHAPE_BY_ID[layer.src] : null;
+
+            return (
+              <g
+                key={layer.id}
+                transform={`translate(${cx} ${cy}) rotate(${layer.rotation}) scale(${size / 100})`}
+                pointerEvents="none"
+              >
+                {layer.kind === "image" ? (
+                  <image
+                    href={layer.src}
+                    x={-50}
+                    y={-50}
+                    width={100}
+                    height={100}
+                    preserveAspectRatio="xMidYMid meet"
+                  />
+                ) : shape ? (
+                  <path d={shape.d} fillRule={shape.rule} fill={layer.color ?? "#FFFFFF"} />
+                ) : null}
+              </g>
+            );
+          })}
+
+      {garment.graphic && garmentView === "front" && (
         <motion.text
           initial={false}
           animate={{ y: g.chestY + 30 }}
@@ -185,8 +325,16 @@ function Shoes({ g }: { g: BodyGeometry }) {
   const legC = g.hipHalf * 0.5 * 0.92;
   return (
     <g fill="var(--avatar-shoe)">
-      <motion.ellipse initial={false} animate={{ cx: 160 + legC + 3, cy: g.floor - 6, rx: 17, ry: 9 }} transition={morph} />
-      <motion.ellipse initial={false} animate={{ cx: 160 - legC - 3, cy: g.floor - 6, rx: 17, ry: 9 }} transition={morph} />
+      <motion.ellipse
+        initial={false}
+        animate={{ cx: 160 + legC + 3, cy: g.floor - 6, rx: 17, ry: 9 }}
+        transition={morph}
+      />
+      <motion.ellipse
+        initial={false}
+        animate={{ cx: 160 - legC - 3, cy: g.floor - 6, rx: 17, ry: 9 }}
+        transition={morph}
+      />
     </g>
   );
 }
@@ -195,24 +343,66 @@ function Head({ g, look, gid }: { g: BodyGeometry; look: AvatarLook; gid: string
   const { headCx: cx, headCy: cy, headR: r } = g;
   return (
     <g>
-      <motion.circle initial={false} animate={{ cx: cx - r * 0.98, cy: cy + r * 0.12, r: r * 0.2 }} transition={morph} fill={shade(look.skin, 92)} />
-      <motion.circle initial={false} animate={{ cx: cx + r * 0.98, cy: cy + r * 0.12, r: r * 0.2 }} transition={morph} fill={shade(look.skin, 92)} />
-      <motion.circle initial={false} animate={{ cx, cy, r }} transition={morph} fill={`url(#skin-${gid})`} />
+      <motion.circle
+        initial={false}
+        animate={{ cx: cx - r * 0.98, cy: cy + r * 0.12, r: r * 0.2 }}
+        transition={morph}
+        fill={shade(look.skin, 92)}
+      />
+      <motion.circle
+        initial={false}
+        animate={{ cx: cx + r * 0.98, cy: cy + r * 0.12, r: r * 0.2 }}
+        transition={morph}
+        fill={shade(look.skin, 92)}
+      />
+      <motion.circle
+        initial={false}
+        animate={{ cx, cy, r }}
+        transition={morph}
+        fill={`url(#skin-${gid})`}
+      />
 
       {/* blush */}
-      <motion.ellipse initial={false} animate={{ cx: cx - r * 0.52, cy: cy + r * 0.38, rx: r * 0.16, ry: r * 0.09 }} transition={morph} fill="var(--destructive)" opacity={0.14} />
-      <motion.ellipse initial={false} animate={{ cx: cx + r * 0.52, cy: cy + r * 0.38, rx: r * 0.16, ry: r * 0.09 }} transition={morph} fill="var(--destructive)" opacity={0.14} />
+      <motion.ellipse
+        initial={false}
+        animate={{ cx: cx - r * 0.52, cy: cy + r * 0.38, rx: r * 0.16, ry: r * 0.09 }}
+        transition={morph}
+        fill="var(--destructive)"
+        opacity={0.14}
+      />
+      <motion.ellipse
+        initial={false}
+        animate={{ cx: cx + r * 0.52, cy: cy + r * 0.38, rx: r * 0.16, ry: r * 0.09 }}
+        transition={morph}
+        fill="var(--destructive)"
+        opacity={0.14}
+      />
 
       {/* eyes with blink */}
       {[-1, 1].map((s) => (
         <motion.g
           key={s}
           animate={{ scaleY: [1, 1, 0.1, 1, 1] }}
-          transition={{ duration: 4.2, repeat: Infinity, times: [0, 0.9, 0.93, 0.96, 1], delay: s === 1 ? 0.02 : 0 }}
+          transition={{
+            duration: 4.2,
+            repeat: Infinity,
+            times: [0, 0.9, 0.93, 0.96, 1],
+            delay: s === 1 ? 0.02 : 0,
+          }}
           style={{ transformOrigin: `${cx + s * r * 0.36}px ${cy + r * 0.08}px` }}
         >
-          <motion.ellipse initial={false} animate={{ cx: cx + s * r * 0.36, cy: cy + r * 0.08, rx: r * 0.1, ry: r * 0.14 }} transition={morph} fill="var(--ink)" />
-          <motion.circle initial={false} animate={{ cx: cx + s * r * 0.36 + r * 0.035, cy: cy + r * 0.03, r: r * 0.035 }} transition={morph} fill="var(--ink-foreground)" />
+          <motion.ellipse
+            initial={false}
+            animate={{ cx: cx + s * r * 0.36, cy: cy + r * 0.08, rx: r * 0.1, ry: r * 0.14 }}
+            transition={morph}
+            fill="var(--ink)"
+          />
+          <motion.circle
+            initial={false}
+            animate={{ cx: cx + s * r * 0.36 + r * 0.035, cy: cy + r * 0.03, r: r * 0.035 }}
+            transition={morph}
+            fill="var(--ink-foreground)"
+          />
         </motion.g>
       ))}
 
@@ -221,7 +411,9 @@ function Head({ g, look, gid }: { g: BodyGeometry; look: AvatarLook; gid: string
         <motion.path
           key={`b${s}`}
           initial={false}
-          animate={{ d: `M${cx + s * r * 0.22},${cy - r * 0.2} Q${cx + s * r * 0.36},${cy - r * 0.28} ${cx + s * r * 0.5},${cy - r * 0.2}` }}
+          animate={{
+            d: `M${cx + s * r * 0.22},${cy - r * 0.2} Q${cx + s * r * 0.36},${cy - r * 0.28} ${cx + s * r * 0.5},${cy - r * 0.2}`,
+          }}
           transition={morph}
           fill="none"
           stroke={look.hair}
@@ -232,7 +424,9 @@ function Head({ g, look, gid }: { g: BodyGeometry; look: AvatarLook; gid: string
 
       <motion.path
         initial={false}
-        animate={{ d: `M${cx - r * 0.2},${cy + r * 0.42} Q${cx},${cy + r * 0.6} ${cx + r * 0.2},${cy + r * 0.42}` }}
+        animate={{
+          d: `M${cx - r * 0.2},${cy + r * 0.42} Q${cx},${cy + r * 0.6} ${cx + r * 0.2},${cy + r * 0.42}`,
+        }}
         transition={morph}
         fill="none"
         stroke="var(--ink)"
@@ -251,7 +445,14 @@ function HairBack({ g, look }: { g: BodyGeometry; look: AvatarLook }) {
     return <motion.path initial={false} animate={{ d }} transition={morph} fill={look.hair} />;
   }
   if (look.hairStyle === "bun") {
-    return <motion.circle initial={false} animate={{ cx, cy: cy - r * 1.05, r: r * 0.42 }} transition={morph} fill={look.hair} />;
+    return (
+      <motion.circle
+        initial={false}
+        animate={{ cx, cy: cy - r * 1.05, r: r * 0.42 }}
+        transition={morph}
+        fill={look.hair}
+      />
+    );
   }
   return null;
 }
@@ -261,7 +462,15 @@ function HairFront({ g, look }: { g: BodyGeometry; look: AvatarLook }) {
   switch (look.hairStyle) {
     case "buzz": {
       const d = `M${cx - r},${cy - r * 0.05} C${cx - r * 1.02},${cy - r * 1.12} ${cx + r * 1.02},${cy - r * 1.12} ${cx + r},${cy - r * 0.05} C${cx + r * 0.72},${cy - r * 0.62} ${cx - r * 0.72},${cy - r * 0.62} ${cx - r},${cy - r * 0.05} Z`;
-      return <motion.path initial={false} animate={{ d }} transition={morph} fill={look.hair} opacity={0.92} />;
+      return (
+        <motion.path
+          initial={false}
+          animate={{ d }}
+          transition={morph}
+          fill={look.hair}
+          opacity={0.92}
+        />
+      );
     }
     case "curly":
       return (
@@ -270,12 +479,24 @@ function HairFront({ g, look }: { g: BodyGeometry; look: AvatarLook }) {
             <motion.circle
               key={i}
               initial={false}
-              animate={{ cx: cx + t * r, cy: cy - r * (0.72 + (i % 2) * 0.16) + Math.abs(t) * r * 0.32, r: r * 0.34 }}
+              animate={{
+                cx: cx + t * r,
+                cy: cy - r * (0.72 + (i % 2) * 0.16) + Math.abs(t) * r * 0.32,
+                r: r * 0.34,
+              }}
               transition={morph}
             />
           ))}
-          <motion.circle initial={false} animate={{ cx: cx - r * 0.98, cy: cy - r * 0.05, r: r * 0.26 }} transition={morph} />
-          <motion.circle initial={false} animate={{ cx: cx + r * 0.98, cy: cy - r * 0.05, r: r * 0.26 }} transition={morph} />
+          <motion.circle
+            initial={false}
+            animate={{ cx: cx - r * 0.98, cy: cy - r * 0.05, r: r * 0.26 }}
+            transition={morph}
+          />
+          <motion.circle
+            initial={false}
+            animate={{ cx: cx + r * 0.98, cy: cy - r * 0.05, r: r * 0.26 }}
+            transition={morph}
+          />
         </g>
       );
     default: {

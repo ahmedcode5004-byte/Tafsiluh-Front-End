@@ -135,8 +135,17 @@ export function SiteHeader() {
           >
             <div className="container-page flex flex-col py-4">
               {NAV.map((n, i) => (
-                <motion.div key={n.label} initial={{ x: -12, opacity: 0 }} animate={{ x: 0, opacity: 1 }} transition={{ delay: i * 0.04 }}>
-                  <Link to={n.to} search={n.search} className="block py-3 font-display text-2xl font-semibold">
+                <motion.div
+                  key={n.label}
+                  initial={{ x: -12, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  transition={{ delay: i * 0.04 }}
+                >
+                  <Link
+                    to={n.to}
+                    search={n.search}
+                    className="block py-3 font-display text-2xl font-semibold"
+                  >
                     {n.label}
                   </Link>
                 </motion.div>
@@ -145,7 +154,10 @@ export function SiteHeader() {
                 Design your own
               </Link>
               {user && (
-                <Link to="/account/closet" className="block py-3 font-display text-2xl font-semibold">
+                <Link
+                  to="/account/closet"
+                  className="block py-3 font-display text-2xl font-semibold"
+                >
                   My closet
                 </Link>
               )}

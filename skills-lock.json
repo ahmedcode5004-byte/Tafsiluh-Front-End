@@ -1,0 +1,936 @@
+{
+  "version": 2,
+  "skills": {
+    "accessibility": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/accessibility/SKILL.md",
+      "computedHash": "af8f61f2a1e058bfba59f7b5788779cc23ccab1e5c5020a34a9d4e9984e930ee"
+    },
+    "agent-patterns": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/agent-patterns/SKILL.md",
+      "computedHash": "e44b70dc6629278b76d3b28e3a5f53992001b946fef996c5c941c30859d82da6"
+    },
+    "agent-session-search": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/agent-session-search/SKILL.md",
+      "computedHash": "39b936f17398a27f567551b76545547c608cebf64b3760f822314aea92f028f0"
+    },
+    "agent-standards": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/agent-standards/SKILL.md",
+      "computedHash": "085657d0d276eacf2ca4b764f28ff38a66e06aabfd215b4d00fc93635d0daa90"
+    },
+    "amazon-web-services": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/amazon-web-services/SKILL.md",
+      "computedHash": "9bd4f3398a064d9a088fc96d4510540816742eb88f4d7f1564ef65dcb3acb71e"
+    },
+    "api-testing": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/api-testing/SKILL.md",
+      "computedHash": "b2f38518eedce723a1594d7526e85594c2d03f54c9f2d6f8ba258c8c464114bb"
+    },
+    "application-security": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/application-security/SKILL.md",
+      "computedHash": "c733bfc00bdb89745cc59171cd965ff431d4cc7ac683e4e42aa669107747074a"
+    },
+    "arktype-validation": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/arktype-validation/SKILL.md",
+      "computedHash": "b77d1b0e8e5a95d19cc456e5faebcc9949f9b64f9a6f31b275f79d5e7af5a28d"
+    },
+    "asset-manager": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/asset-manager/SKILL.md",
+      "computedHash": "448099e75734d5d494fff6b57320a2f348846254cf2a960a5d1eb61ec8830081"
+    },
+    "astro": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/astro/SKILL.md",
+      "computedHash": "451203220fa5ca47b5a61b57dc6bb092e157e6b0c43ffb0a89bb9f8e07a47b79"
+    },
+    "beads": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": ".agents/skills/beads/SKILL.md",
+      "computedHash": "e3e1d286d3f4091430bb6f55f1db3b583055dc4c92e44abc237ba2e43dff897a"
+    },
+    "beads-viewer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/beads-viewer/SKILL.md",
+      "computedHash": "eb0880d6c6aa1db76c3981bd2f6d20183ec7f869ac8c7ddc9a32052a720c134b"
+    },
+    "beads-workflow": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/beads-workflow/SKILL.md",
+      "computedHash": "706dbadf3f4045a7a841f478353e04ff164ea54a794ec6b9bb1050d7aed64093"
+    },
+    "better-auth": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/better-auth/SKILL.md",
+      "computedHash": "c50aa364919b12ff1cc2f39f789c3b34a24f22b015103a35bbb52cb746dc6134"
+    },
+    "brand-designer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/brand-designer/SKILL.md",
+      "computedHash": "2583ea26f9cf05b3a1ad45511c7439257e90f40bf08f7504c9bcb47980705849"
+    },
+    "bun-runtime": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/bun-runtime/SKILL.md",
+      "computedHash": "58dee2a62c749d4857070e248e0fdbf1409f8525c2fecacb1a57e8088840521e"
+    },
+    "changesets": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/changesets/SKILL.md",
+      "computedHash": "8cecb5f2fd1002f2888ad090425bc20c1dc64b1c9b7a7dd5de4470888b54b07e"
+    },
+    "chrome-devtools": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/chrome-devtools/SKILL.md",
+      "computedHash": "74d2ed0175677ccb1a6b4a1d422699bbea436e28ce5dc77bdbe7e2482aa865ac"
+    },
+    "ci-cd-architecture": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/ci-cd-architecture/SKILL.md",
+      "computedHash": "996d4a29e337ee3a6ad5921d847951b2693155d09c08bf8631b850261c93af17"
+    },
+    "cli-power-tools": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/cli-power-tools/SKILL.md",
+      "computedHash": "edc044fb6ab95c77fe7b2975c44f723fb4f50ff7b4f4a64e6eab650f7ddf2208"
+    },
+    "cloudflare": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/cloudflare/SKILL.md",
+      "computedHash": "426cc5d3220c5c875347441a3d52d1c0212b0a2647073f349e54d289315231b2"
+    },
+    "codebase-packager": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/codebase-packager/SKILL.md",
+      "computedHash": "4c2d766999ee03aa7a6193c42694291c5f1a9331d553d390c4d0b61b2f4c8562"
+    },
+    "content-humanizer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/content-humanizer/SKILL.md",
+      "computedHash": "7a31a8b186755fc00620d5f658f90867885afb4a63f8bab3f71cf11d220d06ee"
+    },
+    "coolify": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/coolify/SKILL.md",
+      "computedHash": "a1591dce118a026ee82c6afc6d0bf2ce740739ff0ca122306f0caea4c0dfa361"
+    },
+    "css-animation-patterns": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/css-animation-patterns/SKILL.md",
+      "computedHash": "1e7877dc2a333546a19aea01a6f13d516ca3e4f0dfeae6cd836fbcd8ad907afe"
+    },
+    "data-visualizer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/data-visualizer/SKILL.md",
+      "computedHash": "2ab09244b1db5b3c3ccee89aea36b61aadac97f5c81a188f8c0c145c2694c305"
+    },
+    "database-security": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/database-security/SKILL.md",
+      "computedHash": "537e61aa6debed33852d33ecb845508cba64b710040e2c5dc9d93e5dd23b5c66"
+    },
+    "db-enforcer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/db-enforcer/SKILL.md",
+      "computedHash": "ed7fb8e21b27ea73621ba771e706cb658c913945d4022d4b01eec7669081b437"
+    },
+    "de-slopify": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/de-slopify/SKILL.md",
+      "computedHash": "0a94d20124a5537ffb62c889251b5da18795b14778dfa3014817a4c6d636f4c6"
+    },
+    "deployment-strategy": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/deployment-strategy/SKILL.md",
+      "computedHash": "6a7d262f5dd8a2e6ec12dc333a6338fc5eb050705d64a8e998a6e0fb83a3e74b"
+    },
+    "design-system": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/design-system/SKILL.md",
+      "computedHash": "21e2ff3cd24ced527e2404136b56d536840de870d0818c0ab5bd9c0b3e890c7c"
+    },
+    "destructive-command-guard": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/destructive-command-guard/SKILL.md",
+      "computedHash": "d7fc7ebe805f8bd64b0915ded49f4e22ee3dd1be0ed5d41decbd1a4d163fc1db"
+    },
+    "docker": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/docker/SKILL.md",
+      "computedHash": "4e77df40141ff9fc9aba3c6feee54eb0e1334970b58b4ce92b8b3b6e82e6df4f"
+    },
+    "drizzle-orm": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/drizzle-orm/SKILL.md",
+      "computedHash": "50f4d2a07a97653c042958e8131e59f1d6b9437879d2096162dfbf71ffbd1405"
+    },
+    "e2e-testing": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/e2e-testing/SKILL.md",
+      "computedHash": "82f5011daaafff91e85f3a07c0dec55f27ead8019162b9ff1647d7a61a3fb5c8"
+    },
+    "electricsql": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/electricsql/SKILL.md",
+      "computedHash": "862bd744496c2e98e195514b67726965b266aa605878c42370fc9600c8247769"
+    },
+    "expert-instruction": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/expert-instruction/SKILL.md",
+      "computedHash": "75c1737d966e50e339bd6ff4fa6b9cbf4cad0c4697935275f20587a5dca1407c"
+    },
+    "figma-developer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/figma-developer/SKILL.md",
+      "computedHash": "9eb55b0f3c80b2e6552b4d4ea373560e8c4889eb2a7e210b3b0a9a071b1be6f3"
+    },
+    "find-skills": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/find-skills/SKILL.md",
+      "computedHash": "64c2a2e171f6185ba14991c79e8545cc9c284770a82bccbb7fbdb7039b9d847f"
+    },
+    "frontend-builder": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-builder/SKILL.md",
+      "computedHash": "32fef905312d0e0d289bb20c6b6b687033d894e13a8b77f75079ee35c9bf1e17"
+    },
+    "ghostty": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/ghostty/SKILL.md",
+      "computedHash": "c372207cf51fbd7fa1ce2c6699743b2819b66c658f7b91be58e3c28a2e775a03"
+    },
+    "git-workflow": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/git-workflow/SKILL.md",
+      "computedHash": "393f3a06471267800442039db26964af9fe96e3c6ef8dfe31a78f7a2c51abd53"
+    },
+    "github-actions": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/github-actions/SKILL.md",
+      "computedHash": "1654f127412cb7f90b24c7a9bf02eaab6c48b16e70cec853c85750e2bebbbf4d"
+    },
+    "github-cli": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/github-cli/SKILL.md",
+      "computedHash": "07bc41a5ded4e74913ba87813b8983dd260f217a4540b48ee41b8e2365c46dfa"
+    },
+    "hono": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/hono/SKILL.md",
+      "computedHash": "9b6286282cd51b58952756a99d1e1b9ba8f5444892a9706ef329fb4468d78a99"
+    },
+    "hydration-guardian": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/hydration-guardian/SKILL.md",
+      "computedHash": "612cb6fff1f7c87a6891c0a003198db03b2bb17b7df0fe46160412be5eccc3c5"
+    },
+    "icon-design": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/icon-design/SKILL.md",
+      "computedHash": "6eb9905707df52ffbde57ab73a9df82ef97dbdfe86d7808bc95039237e9ce19e"
+    },
+    "knowledge-base-manager": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/knowledge-base-manager/SKILL.md",
+      "computedHash": "118dfc10d4acc1a676ca869d2aacb845b558ce6f03e618b0745b12afecca674f"
+    },
+    "knowledge-graph-builder": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/knowledge-graph-builder/SKILL.md",
+      "computedHash": "5cf10f50162a88a9895de4da76d08bc27a4dedc9348d2870d9a54ead12025565"
+    },
+    "local-first": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/local-first/SKILL.md",
+      "computedHash": "2ad54c3c88334d11a6241393a7dadd03a1f1d6babf7a9863548125b0fdb1d9d4"
+    },
+    "localization-engineer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/localization-engineer/SKILL.md",
+      "computedHash": "178f67427a74c201496834bd2e01daf159a60524a9bf3a6c96631815b2374368"
+    },
+    "mcp-expert": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/mcp-expert/SKILL.md",
+      "computedHash": "1e3ad14d86b16f023e55b00f07a4a1078f91170c616652ad10b45935ea962982"
+    },
+    "mermaid-diagrams": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/mermaid-diagrams/SKILL.md",
+      "computedHash": "4a0662228786fe006c5704f7237e29c4dc8e02ef6e32ccae473402d0a4a823cb"
+    },
+    "meta-agent-creator": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/meta-agent-creator/SKILL.md",
+      "computedHash": "6e9abb8667a95311a75cf7a91533a500d7c438f0e57a1b4afaa699dd01c4415b"
+    },
+    "meta-command-creator": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/meta-command-creator/SKILL.md",
+      "computedHash": "7812b196759bca844e07ef8af10dc7c15b0aa520b7d71a60d7ca03feccd362dd"
+    },
+    "meta-hook-creator": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/meta-hook-creator/SKILL.md",
+      "computedHash": "1ff1c534dd5714e33e9ac9c79732f7c966eb7974fa65dcae38a53822b741ee4c"
+    },
+    "meta-plugin-creator": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/meta-plugin-creator/SKILL.md",
+      "computedHash": "b86a5f6d64912e74fd6c32690a2a35f1d55ab9228d41c5dee1d6d2fead76b9f2"
+    },
+    "meta-skill-creator": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/meta-skill-creator/SKILL.md",
+      "computedHash": "5bfe40a6e843fb443f41d3f78bb25aa54ce52dad139f8fae758021f9d09bd616"
+    },
+    "mise": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/mise/SKILL.md",
+      "computedHash": "00f5b6d1bcb071da6aab9c0ecd1528662d62b4ffd11dea3e581844c382d24a82"
+    },
+    "motion": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/motion/SKILL.md",
+      "computedHash": "da630a547ea0802fbd301d0862dde73b9514c0036d4dd492e4cc4fb40babb1c9"
+    },
+    "openapi": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/openapi/SKILL.md",
+      "computedHash": "e4e4045921a68b6853657345ae0d795efcafab8c59700d62ff1d10a642a58f2d"
+    },
+    "opentofu": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/opentofu/SKILL.md",
+      "computedHash": "8631916a8b4c497bf86fc937a4893a6c3fb53d45bef5551876e4756389c6c5ff"
+    },
+    "orchestration": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/orchestration/SKILL.md",
+      "computedHash": "ae0a03318cb093072a7ca04e1809295bc56b06b23773c038aeec46394bbe3206"
+    },
+    "package-publishing": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/package-publishing/SKILL.md",
+      "computedHash": "70065e05e34144cb6bd3490e8ef5d4d4ec7edf01fe1df4ca6c41124a05283379"
+    },
+    "pdf-tools": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/pdf-tools/SKILL.md",
+      "computedHash": "953b81f5e488cbdbc00666d517beca873d010c5e2b7442041cfbb7896a185d2f"
+    },
+    "performance-optimizer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/performance-optimizer/SKILL.md",
+      "computedHash": "8c9972f1c2dc12e110ff4308912f1f6a16f19f80cfb4e91a596d00fc5cd8a206"
+    },
+    "pglite": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/pglite/SKILL.md",
+      "computedHash": "16eec2d767806d505d75c8b2c68afaa189a7f0936a306e24e5c7d514d77a9358"
+    },
+    "pino-logging": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/pino-logging/SKILL.md",
+      "computedHash": "8442c8be2168e0b1cd1ba9981a458c6edd6fb9b2a944f85bff9c447c8e72d324"
+    },
+    "plan-first-development": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/plan-first-development/SKILL.md",
+      "computedHash": "ab487bf3200fc7474c664680eae22d46000c628a435f982d95236cf242edabf5"
+    },
+    "playwright": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/playwright/SKILL.md",
+      "computedHash": "d0bccde137a9a4e6059eb3db2be124bf579b44373963c621bce05a377584933a"
+    },
+    "pnpm-workspace": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/pnpm-workspace/SKILL.md",
+      "computedHash": "bd11412f49458c58246e8c1d75ed07eb0515503553b4d2564fa43868e8fdcf16"
+    },
+    "postgres-tuning": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/postgres-tuning/SKILL.md",
+      "computedHash": "b87cd7aa6cb0d399650a3c553d47e1661459b5cca8461d3bcd500773b8c0369c"
+    },
+    "prompt-engineering": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/prompt-engineering/SKILL.md",
+      "computedHash": "55c82c694728050d0d67603fef9f2f06fb6507616f3b56ce963cb4bfcd33ac03"
+    },
+    "python-uv": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/python-uv/SKILL.md",
+      "computedHash": "cfab13536b67381d9e964fef125b6bf405bf873afcc8cf47310f37bf2f98dc28"
+    },
+    "quality-auditor": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/quality-auditor/SKILL.md",
+      "computedHash": "7c8e09a54a4bfa54ddefe6cabac11b8f26bfb1109b096ec2ba909424a81269d9"
+    },
+    "rag-implementer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/rag-implementer/SKILL.md",
+      "computedHash": "00c493e095883b62fa810f07ce4d770c9b0f22dc4a4dfedb3dacf0f369976017"
+    },
+    "react-email": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/react-email/SKILL.md",
+      "computedHash": "19e44c85de4e8300ea02147c7ed9781da9bc75a926d333f31096ce305a69d6c2"
+    },
+    "react-error-handling": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/react-error-handling/SKILL.md",
+      "computedHash": "4286885b70b57e48221b9a04ec64a272bf09f924750858cc1c3cda87d5f38713"
+    },
+    "react-native": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/react-native/SKILL.md",
+      "computedHash": "75c20080f5cf42f5f7249631129ea60e998afed0a01bf58fe398ce5ec043bd66"
+    },
+    "react-patterns": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/react-patterns/SKILL.md",
+      "computedHash": "8d90200787c9e9ae35e33c4551dd496a1a47c538c38e8dabf02325b0d47e0116"
+    },
+    "react-performance": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/react-performance/SKILL.md",
+      "computedHash": "f3a8a142d6732c322627beca8170d0e080a7badd363e51875b7d62231a0a21fe"
+    },
+    "realtime-sync": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/realtime-sync/SKILL.md",
+      "computedHash": "41c642ca7ba35d0a67ab77feff29649327e73f6177d41ba0d25ada22967f8014"
+    },
+    "remotion": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/remotion/SKILL.md",
+      "computedHash": "84d6f694023d181e9d4879a86e40bfcee2b72f77ef74afd49c2d7918a4762e98"
+    },
+    "repo-updater": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/repo-updater/SKILL.md",
+      "computedHash": "3234d72d1f3778ede2ae1cfa37e4674273d3c5c12309af6816536cb4aeafbcd0"
+    },
+    "resend": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/resend/SKILL.md",
+      "computedHash": "523e09ceac0436d4941f3929d7c2a315447d6a701eaf8caad1557683a9f1e2ca"
+    },
+    "responsive-images": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/responsive-images/SKILL.md",
+      "computedHash": "7409b15f35308e1902449434e495b04531d265af61af8f0ce8cf3f6c4af72681"
+    },
+    "rust": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/rust/SKILL.md",
+      "computedHash": "ab631cebd0e6961bb44f16b5f97b6bdb1bef250c4d13f1e0e1fd323ec1d08d3e"
+    },
+    "scrum-conductor": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/scrum-conductor/SKILL.md",
+      "computedHash": "f1a194898762c9c472b564baeefe9ff1a201a0d4d9623d3b26a887f18cfebee9"
+    },
+    "secure-ai": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/secure-ai/SKILL.md",
+      "computedHash": "c97959f8f3a08f7eac60a50179f998b02002dfca15abfeac885dfc9700dd02e6"
+    },
+    "seo-optimizer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/seo-optimizer/SKILL.md",
+      "computedHash": "0bf67fb1d5be7d7d1839932f58c68b9fc53258edbc71d25cbfeeb39e463d794a"
+    },
+    "service-worker": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/service-worker/SKILL.md",
+      "computedHash": "ccfb55e694bd89dd3d3fe560433b8f65794890c367fd541cfb4a0b590d2fd251"
+    },
+    "shadcn-ui": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn-ui/SKILL.md",
+      "computedHash": "8659de97877c5104dad2a45912733da8fc67379e155f320d0d9b3552160179ab"
+    },
+    "shell-integration": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/shell-integration/SKILL.md",
+      "computedHash": "3a50355361ba0705e4c9f56bf5c93ae2ae703381614a081280c335b56e1e0ef9"
+    },
+    "skill-management": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/skill-management/SKILL.md",
+      "computedHash": "178e694437e5633151d561e54f8225a537dc4d72677e5e60f1b508dff82341f6"
+    },
+    "ssh-remote": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/ssh-remote/SKILL.md",
+      "computedHash": "f3e6fefb9fcdfb8e3bb49624ceb279e2c7d7b0e987ec709fa17e45953c5dfa4f"
+    },
+    "storybook-stories": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/storybook-stories/SKILL.md",
+      "computedHash": "bd75cc18ff465081d63734cc017fae28f86b797b5d56e46b3e728b296064ccbd"
+    },
+    "stripe-integration": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/stripe-integration/SKILL.md",
+      "computedHash": "5dba25f0bbda130caa25396bcac3c2626fec7d8cf9b7cd35cf49bbffa842be6d"
+    },
+    "svelte": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/svelte/SKILL.md",
+      "computedHash": "dd852c761f948d4c689863f0aba3643e2da93f7ba0e0af0d2e59f845963dfa94"
+    },
+    "tailwind": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tailwind/SKILL.md",
+      "computedHash": "29830c16ca2fc8a01c50f00b6a46ed8e8b524dd9389193a7f3798c3d847a0585"
+    },
+    "tanstack-cli": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-cli/SKILL.md",
+      "computedHash": "42ba92be27f10412f5542cbaf21ec4156b1ba6a81ad37000dd0ec82db9c2b3e3"
+    },
+    "tanstack-db": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-db/SKILL.md",
+      "computedHash": "cd3ba8920fed207bd311896defc28cdc51b3b73f866e07f17cbff2d7d53c5487"
+    },
+    "tanstack-devtools": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-devtools/SKILL.md",
+      "computedHash": "8761c82bc153b6b026d6cf97b770982a1c9ffd02ddb60ce4ca0aa2f3a2a0d534"
+    },
+    "tanstack-form": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-form/SKILL.md",
+      "computedHash": "8dde3ec426d3e1384d63026547de41f1cc730141e2ad0dc1cefc3df36f1c0406"
+    },
+    "tanstack-hotkeys": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-hotkeys/SKILL.md",
+      "computedHash": "ac65f95a3747e65df21b46da45038d1be006923b5cb269262bb8d92b9bf6a583"
+    },
+    "tanstack-pacer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-pacer/SKILL.md",
+      "computedHash": "4af8834b304a9c178043d0ae44e1244a73c5ef5f142c3c55d527688d71c24102"
+    },
+    "tanstack-query": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-query/SKILL.md",
+      "computedHash": "d25391311e1c09264f022b11a653ddddb3a8f1c4d11c06df4f6be45133a39e86"
+    },
+    "tanstack-router": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-router/SKILL.md",
+      "computedHash": "06e2487f18a9aef7441de655cba94e4a7177fcaf7e239f8fae63523712914d50"
+    },
+    "tanstack-start": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-start/SKILL.md",
+      "computedHash": "3592eee97146d55b1ff8f69db900100f1b2f5f5ca51abd7255a64abde5812cc0"
+    },
+    "tanstack-store": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-store/SKILL.md",
+      "computedHash": "f302e4397ce83a8479a77c96497bc96789d5bf91d73266385cce983f7dd0eb77"
+    },
+    "tanstack-table": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-table/SKILL.md",
+      "computedHash": "7f3a3144df7640c244f48b42b41ca95b6faa110f10e50405fcc2b710224b4673"
+    },
+    "tanstack-virtual": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tanstack-virtual/SKILL.md",
+      "computedHash": "f7db7d88526ef953f242e4da93b578995d383df1110769978e72c65a0820a6a1"
+    },
+    "tauri": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tauri/SKILL.md",
+      "computedHash": "60808595a7f050369f5169a8bed41c84ed7f5beff7b191e74541a7776a8f92f4"
+    },
+    "technical-docs": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/technical-docs/SKILL.md",
+      "computedHash": "105d784fe6f77a42358aea628f58527156d6ee0d82894f58b7510985377eb181"
+    },
+    "test-driven-development": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/test-driven-development/SKILL.md",
+      "computedHash": "898dd6d95cecef7c0b9aa469a9902e16da2cb44a3ca7235efb3a9e0557925406"
+    },
+    "threejs": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/threejs/SKILL.md",
+      "computedHash": "1d059831df25fad389108f02e05d3f86dacf28b45d44b960848d32c009f98efc"
+    },
+    "tiptap": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tiptap/SKILL.md",
+      "computedHash": "7c537f117ef13c6243d81b519da54a9a7b6faa4f787638f8d6e3c3713eac2994"
+    },
+    "tldr-expert": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tldr-expert/SKILL.md",
+      "computedHash": "0db256cc7342088a444a67525d6a0d00137485c1528a71af8f58d91ecd69b308"
+    },
+    "tracer-bullets": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tracer-bullets/SKILL.md",
+      "computedHash": "89110957c26766876117b00f8e29d9d044f95c15e59364b7a66949a01ca71d3f"
+    },
+    "trekker": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/trekker/SKILL.md",
+      "computedHash": "7e1fec37dd288a1bd9a0026d4abac82149e0a36c4aaade33d9a55842988649c6"
+    },
+    "trpc": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/trpc/SKILL.md",
+      "computedHash": "013bb9b328942137b3ef97ba3f40bf5f9af7892d9642022c6919731ff0c9b141"
+    },
+    "tsdown": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/tsdown/SKILL.md",
+      "computedHash": "d9a55af54523c48657cc8d5e48934633d053c9788e36192b224aa9b2b65c1c01"
+    },
+    "turborepo": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/turborepo/SKILL.md",
+      "computedHash": "d88730b5fb2822bffb11ec7cd1a05692c65346eec0198e6490fc48cd21ede0e6"
+    },
+    "turso": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/turso/SKILL.md",
+      "computedHash": "95d9f87ad5c09c37ea52a345c67a538afbe03eb0785e14bd647235cdbb4c7145"
+    },
+    "typescript-patterns": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/typescript-patterns/SKILL.md",
+      "computedHash": "72d2821f1b28651d1687c55f0a73634989d976546e2856a0a64c6cb44ceea455"
+    },
+    "ui-ux-polish": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/ui-ux-polish/SKILL.md",
+      "computedHash": "d2eb41b7d09515c0b6a17c380a6364fee0387a98d8ac935c9ceb8be16e80b32b"
+    },
+    "usability-tester": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/usability-tester/SKILL.md",
+      "computedHash": "a0084a9dd6f391e9a5eb95e06006eed5368ce829758e7a863fbeb979bb3b4db2"
+    },
+    "ux-designer": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/ux-designer/SKILL.md",
+      "computedHash": "14edad89d5d33c34ea308d8ab2bd41f8dd39feb681a989ce0d1517e857330c06"
+    },
+    "valkey": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/valkey/SKILL.md",
+      "computedHash": "1b94f128072ceb3979fe3ba5e6849898a281b0c2f793ef3cb60b873d43692491"
+    },
+    "vercel-deployment": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/vercel-deployment/SKILL.md",
+      "computedHash": "225d2ab64e454067a1ace38520e839d977dc33ed03ceb53e779c088d243287fd"
+    },
+    "vite": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/vite/SKILL.md",
+      "computedHash": "6fd41901c2ba5892ce922745ff1fac12cbd15ee9dfdfb1edd58a7bfc520c04ad"
+    },
+    "vitest-testing": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/vitest-testing/SKILL.md",
+      "computedHash": "874b33c7ba1608587b1261fc4dea10fa0d63a02a7adc0a4b87a1fc40fc475c3d"
+    },
+    "zod-validation": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/zod-validation/SKILL.md",
+      "computedHash": "ba05b800643b15e773219bdca08e8f6c4129361d5acb1e03f9c9b576d2b5e75a"
+    },
+    "zustand": {
+      "source": "oakoss/agent-skills",
+      "commit": "85e3a3919d9e0ec7f7302a5143ec4b3e66f5f6ad",
+      "sourceType": "github",
+      "skillPath": "skills/zustand/SKILL.md",
+      "computedHash": "5b3905affa28c03ab4ee01eca99cb462422fe1f9a910b2758d1e6552b03fc524"
+    }
+  }
+}

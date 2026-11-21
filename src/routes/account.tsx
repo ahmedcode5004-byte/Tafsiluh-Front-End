@@ -34,15 +34,40 @@ function AccountLayout() {
           <p className="eyebrow text-season-deep">@{user.username}</p>
           <h1 className="mt-2 text-5xl font-semibold">Hi, {user.firstName}</h1>
         </div>
-        <button type="button" onClick={logout} className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-destructive">
+        <button
+          type="button"
+          onClick={logout}
+          className="flex items-center gap-2 text-sm font-semibold text-muted-foreground hover:text-destructive"
+        >
           <LogOut className="size-4" /> Sign out
         </button>
       </div>
       <nav className="mt-8 flex flex-wrap gap-2 border-b border-border pb-4">
-        <Link to="/account" activeOptions={{ exact: true }} className={tab} activeProps={{ className: "!bg-foreground !text-background" }}>Orders</Link>
-        <Link to="/account/avatar" className={tab} activeProps={{ className: "!bg-foreground !text-background" }}>Avatar studio</Link>
-        <Link to="/account/closet" className={tab} activeProps={{ className: "!bg-foreground !text-background" }}>Digital closet</Link>
-        <Link to="/profile/$username" params={{ username: user.username }} className={tab}>Public profile</Link>
+        <Link
+          to="/account"
+          activeOptions={{ exact: true }}
+          className={tab}
+          activeProps={{ className: "!bg-foreground !text-background" }}
+        >
+          Orders
+        </Link>
+        <Link
+          to="/account/avatar"
+          className={tab}
+          activeProps={{ className: "!bg-foreground !text-background" }}
+        >
+          Avatar studio
+        </Link>
+        <Link
+          to="/account/closet"
+          className={tab}
+          activeProps={{ className: "!bg-foreground !text-background" }}
+        >
+          Digital closet
+        </Link>
+        <Link to="/profile/$username" params={{ username: user.username }} className={tab}>
+          Public profile
+        </Link>
       </nav>
       <div className="mt-10">
         <Outlet />

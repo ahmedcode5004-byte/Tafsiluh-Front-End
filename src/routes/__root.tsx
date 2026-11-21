@@ -56,7 +56,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">This page didn't load</h1>
+        <h1 className="text-xl font-semibold tracking-tight text-foreground">
+          This page didn't load
+        </h1>
         <p className="mt-2 text-sm text-muted-foreground">
           Something went wrong on our end. You can try refreshing or head back home.
         </p>
@@ -94,7 +96,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { name: "author", content: "تفصيله" },
       { property: "og:title", content: "تفصيله — Seasonal tees, hoodies & sweatshirts" },
-      { property: "og:description", content: "Seasonal tees, hoodies and sweatshirts sized to your own avatar." },
+      {
+        property: "og:description",
+        content: "Seasonal tees, hoodies and sweatshirts sized to your own avatar.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -106,7 +111,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&display=swap",
       },
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
   shellComponent: RootShell,
@@ -153,7 +157,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div data-season={season} className="flex min-h-screen flex-col bg-background text-foreground">
+      <div
+        data-season={season}
+        className="flex min-h-screen flex-col bg-background text-foreground"
+      >
         <SiteHeader />
         <motion.main
           key={pathname}
@@ -162,7 +169,6 @@ function RootComponent() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Required: nested routes render here. */}
           <Outlet />
         </motion.main>
         <SiteFooter />

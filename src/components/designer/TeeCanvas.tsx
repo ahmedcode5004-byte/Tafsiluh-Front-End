@@ -1,17 +1,30 @@
 import { motion, useDragControls, useMotionValue } from "framer-motion";
-import { useLayoutEffect, useRef, type PointerEvent as ReactPointerEvent, type RefObject } from "react";
-import type { DesignLayer } from "@/types";
+import {
+  useLayoutEffect,
+  useRef,
+  type PointerEvent as ReactPointerEvent,
+  type RefObject,
+} from "react";
+import type { Category, DesignLayer, PrintZone } from "@/types";
 import { SHAPE_BY_ID } from "@/data/designer";
 import { GarmentArt } from "@/components/shop/GarmentArt";
 import { cn } from "@/lib/utils";
 
 /** Printable chest area, as % of the tee illustration box. */
-const PRINT_AREA = { left: 33, top: 29, width: 34, height: 50 };
+const PRINT_AREAS: Record<PrintZone, { left: number; top: number; width: number; height: number }> =
+  {
+    front: { left: 33, top: 29, width: 34, height: 50 },
+    back: { left: 33, top: 29, width: 34, height: 50 },
+    "left-sleeve": { left: 4, top: 40, width: 15, height: 24 },
+    "right-sleeve": { left: 81, top: 40, width: 15, height: 24 },
+  };
 
 const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
 
 interface Props {
   baseColor: string;
+  category?: Category;
+  zone?: PrintZone;
   layers: DesignLayer[];
   editable?: boolean;
   selectedId?: string | null;
@@ -20,38 +33,122 @@ interface Props {
   className?: string;
 }
 
-export function TeeCanvas({ baseColor, layers, editable = false, selectedId = null, onSelect, onChange, className }: Props) {
+export function TeeCanvas({
+  baseColor,
+  category = "tshirt",
+  zone = "front",
+  layers,
+  editable = false,
+  selectedId = null,
+  onSelect,
+  onChange,
+  className,
+}: Props) {
   const areaRef = useRef<HTMLDivElement>(null);
   const deselect = (e: ReactPointerEvent) => {
     if (editable && e.target === e.currentTarget) onSelect?.(null);
   };
 
+  const printArea = PRINT_AREAS[zone];
+
+  if (zone === "left-sleeve" || zone === "right-sleeve") {
+    const mirror = zone === "right-sleeve";
+
+    return (
+      <div
+        className={cn("relative aspect-100/150 w-full select-none", className)}
+        onPointerDown={deselect}
+      >
+        <svg
+          viewBox="0 0 100 150"
+          className="pointer-events-none absolute inset-0 h-full w-full drop-shadow-[0_10px_14px_rgba(0,0,0,0.12)]"
+          aria-hidden
+          style={{ transform: mirror ? "scaleX(-1)" : undefined }}
+        >
+          <path
+            d="M17 26 C34 18 48 23 58 34 C68 46 71 64 68 82 L59 136 C50 142 40 142 31 137 L24 82 C20 62 14 45 17 26 Z"
+            style={{ fill: baseColor }}
+          />
+          <path
+            d="M17 26 C34 18 48 23 58 34"
+            fill="none"
+            style={{ stroke: "rgba(0,0,0,.18)" }}
+            strokeWidth="3"
+          />
+          <path
+            d="M31 137 C40 142 50 142 59 136"
+            fill="none"
+            style={{ stroke: "rgba(0,0,0,.18)" }}
+            strokeWidth="2"
+          />
+        </svg>
+        <div
+          ref={areaRef}
+          onPointerDown={deselect}
+          className={cn(
+            "absolute",
+            editable && "rounded-md outline-dashed outline-1 outline-foreground/25",
+          )}
+          style={{ left: "22%", top: "34%", width: "56%", height: "40%" }}
+        >
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            {layers
+              .filter((l) => (l.zone ?? "front") === zone)
+              .map((l) => (
+                <LayerView
+                  key={l.id}
+                  layer={l}
+                  editable={editable}
+                  selected={editable && l.id === selectedId}
+                  areaRef={areaRef}
+                  onSelect={onSelect}
+                  onChange={onChange}
+                />
+              ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className={cn("relative aspect-[200/220] w-full select-none", className)} onPointerDown={deselect}>
-      <GarmentArt category="tshirt" color={baseColor} className="pointer-events-none absolute inset-0" />
+    <div
+      className={cn("relative aspect-200/220 w-full select-none", className)}
+      onPointerDown={deselect}
+    >
+      <GarmentArt
+        category={category}
+        color={baseColor}
+        className="pointer-events-none absolute inset-0"
+      />
       <div
         ref={areaRef}
         onPointerDown={deselect}
-        className={cn("absolute", editable && "rounded-md outline-dashed outline-1 outline-foreground/25")}
+        className={cn(
+          "absolute",
+          editable && "rounded-md outline-dashed outline-1 outline-foreground/25",
+        )}
         style={{
-          left: `${PRINT_AREA.left}%`,
-          top: `${PRINT_AREA.top}%`,
-          width: `${PRINT_AREA.width}%`,
-          height: `${PRINT_AREA.height}%`,
+          left: `${printArea.left}%`,
+          top: `${printArea.top}%`,
+          width: `${printArea.width}%`,
+          height: `${printArea.height}%`,
         }}
       >
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {layers.map((l) => (
-            <LayerView
-              key={l.id}
-              layer={l}
-              editable={editable}
-              selected={editable && l.id === selectedId}
-              areaRef={areaRef}
-              onSelect={onSelect}
-              onChange={onChange}
-            />
-          ))}
+          {layers
+            .filter((l) => (l.zone ?? "front") === zone)
+            .map((l) => (
+              <LayerView
+                key={l.id}
+                layer={l}
+                editable={editable}
+                selected={editable && l.id === selectedId}
+                areaRef={areaRef}
+                onSelect={onSelect}
+                onChange={onChange}
+              />
+            ))}
         </div>
       </div>
     </div>
@@ -93,7 +190,9 @@ function LayerView({
     const start = layer.size;
     const move = (ev: PointerEvent) => {
       const d = (ev.clientX - startX + (ev.clientY - startY)) / 2;
-      onChange?.(layer.id, { size: Math.round(clamp(start + ((d * 2) / area.width) * 100, 8, 100)) });
+      onChange?.(layer.id, {
+        size: Math.round(clamp(start + ((d * 2) / area.width) * 100, 8, 100)),
+      });
     };
     const up = () => {
       window.removeEventListener("pointermove", move);
@@ -106,7 +205,12 @@ function LayerView({
   return (
     <div
       className="absolute"
-      style={{ left: `${layer.x}%`, top: `${layer.y}%`, width: `${layer.size}%`, transform: "translate(-50%, -50%)" }}
+      style={{
+        left: `${layer.x}%`,
+        top: `${layer.y}%`,
+        width: `${layer.size}%`,
+        transform: "translate(-50%, -50%)",
+      }}
     >
       <motion.div
         drag={editable}
@@ -139,7 +243,7 @@ function LayerView({
         className={cn(
           "relative",
           editable && "pointer-events-auto cursor-grab touch-none active:cursor-grabbing",
-          selected && "rounded-sm outline outline-2 -outline-offset-2 outline-season",
+          selected && "rounded-sm outline-2 -outline-offset-2 outline-season",
         )}
       >
         <LayerArt layer={layer} />
@@ -158,7 +262,14 @@ function LayerView({
 
 export function LayerArt({ layer }: { layer: DesignLayer }) {
   if (layer.kind === "image") {
-    return <img src={layer.src} alt="" draggable={false} className="pointer-events-none block h-auto w-full" />;
+    return (
+      <img
+        src={layer.src}
+        alt=""
+        draggable={false}
+        className="pointer-events-none block h-auto w-full"
+      />
+    );
   }
   const shape = SHAPE_BY_ID[layer.src];
   if (!shape) return null;

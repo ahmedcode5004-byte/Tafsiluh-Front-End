@@ -72,7 +72,8 @@ export function FitModal() {
     setTouchedSize(false);
   }, [fitRequest]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  const measurements = mode === "avatar" && avatar ? avatar.measurements : clampMeasurements(custom);
+  const measurements =
+    mode === "avatar" && avatar ? avatar.measurements : clampMeasurements(custom);
   const recommended = recommendSize(measurements);
   const activeSize = touchedSize ? size : recommended;
 
@@ -96,7 +97,10 @@ export function FitModal() {
       if (fitRequest.then === "checkout") {
         void navigate({ to: "/checkout" });
       } else {
-        void toastSuccess("Added to your bag", `${summary.quantity} × ${summary.name} · ${summary.color.name} · ${activeSize}`);
+        void toastSuccess(
+          "Added to your bag",
+          `${summary.quantity} × ${summary.name} · ${summary.color.name} · ${activeSize}`,
+        );
       }
     } else {
       incrementWithFit(fitRequest.lineId, fit, activeSize);
@@ -113,12 +117,25 @@ export function FitModal() {
   const isBuyNow = fitRequest?.kind === "add" && fitRequest.then === "checkout";
 
   return (
-    <Modal open={!!fitRequest && !!summary} onClose={closeFit} label="Choose your fit" className="sm:max-w-2xl">
+    <Modal
+      open={!!fitRequest && !!summary}
+      onClose={closeFit}
+      label="Choose your fit"
+      className="sm:max-w-2xl"
+    >
       {summary && (
         <div className="p-6 sm:p-9">
           <div className="flex items-center gap-4 pr-10">
-            <div className="size-20 shrink-0 rounded-2xl p-2" style={{ background: tint(summary.color.hex, 26) }}>
-              <DesignThumb design={summary.design} category={summary.category} color={summary.color.hex} graphic={summary.graphic} />
+            <div
+              className="size-20 shrink-0 rounded-2xl p-2"
+              style={{ background: tint(summary.color.hex, 26) }}
+            >
+              <DesignThumb
+                design={summary.design}
+                category={summary.category}
+                color={summary.color.hex}
+                graphic={summary.graphic}
+              />
             </div>
             <div className="min-w-0">
               <p className="eyebrow text-season-deep">Smart sizing</p>
@@ -129,7 +146,9 @@ export function FitModal() {
             </div>
           </div>
 
-          <p className="mt-6 text-sm font-semibold">How should we size {summary.quantity > 1 ? "these" : "this"}?</p>
+          <p className="mt-6 text-sm font-semibold">
+            How should we size {summary.quantity > 1 ? "these" : "this"}?
+          </p>
           <div className="mt-3 grid gap-3 sm:grid-cols-2">
             <OptionCard
               active={mode === "avatar"}
@@ -203,7 +222,10 @@ export function FitModal() {
                 >
                   {s}
                   {s === recommended && (
-                    <span className="absolute -right-1 -top-1 size-2.5 rounded-full bg-season" aria-label="recommended" />
+                    <span
+                      className="absolute -right-1 -top-1 size-2.5 rounded-full bg-season"
+                      aria-label="recommended"
+                    />
                   )}
                 </button>
               ))}
@@ -253,17 +275,30 @@ function OptionCard({
       aria-disabled={disabled}
       className={cn(
         "rounded-2xl border p-4 text-left transition",
-        active ? "border-foreground bg-foreground text-background" : "border-foreground/15 hover:border-foreground/40",
+        active
+          ? "border-foreground bg-foreground text-background"
+          : "border-foreground/15 hover:border-foreground/40",
         disabled && "cursor-not-allowed opacity-70",
       )}
     >
-      <span className={cn("grid size-9 place-items-center rounded-full", active ? "bg-season text-ink" : "bg-secondary")}>
+      <span
+        className={cn(
+          "grid size-9 place-items-center rounded-full",
+          active ? "bg-season text-ink" : "bg-secondary",
+        )}
+      >
         {icon}
       </span>
       <span className="mt-3 block font-semibold">{title}</span>
-      <span className={cn("mt-1 block text-xs", active ? "text-background/70" : "text-muted-foreground")}>{body}</span>
+      <span
+        className={cn(
+          "mt-1 block text-xs",
+          active ? "text-background/70" : "text-muted-foreground",
+        )}
+      >
+        {body}
+      </span>
       {extra}
     </button>
   );
 }
-

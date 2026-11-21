@@ -4,8 +4,8 @@ import type { NewCartItem } from "@/store/cart";
 export const CUSTOM_TEE = {
   productId: "custom-tee",
   slug: "custom-tee",
-  name: "Custom Tee",
-  /** Flat price per custom tee, whatever is printed on it. */
+  name: "Custom Garment",
+  /** Flat price per custom garment, whatever is printed on it. */
   price: 45,
 } as const;
 
@@ -17,11 +17,18 @@ export function buildCustomCartItem(input: {
   quantity: number;
   fit: FitChoice;
 }): NewCartItem {
+  const category = input.design.garmentCategory ?? "tshirt";
+  const names = {
+    tshirt: "Custom T-Shirt",
+    hoodie: "Custom Hoodie",
+    sweatshirt: "Custom Sweatshirt",
+  };
+
   return {
     productId: CUSTOM_TEE.productId,
     slug: CUSTOM_TEE.slug,
-    name: CUSTOM_TEE.name,
-    category: "tshirt",
+    name: names[category],
+    category,
     price: customTeePrice(input.design),
     color: input.design.baseColor,
     size: input.size,

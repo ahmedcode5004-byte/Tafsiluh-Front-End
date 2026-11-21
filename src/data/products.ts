@@ -53,7 +53,8 @@ export const PRODUCTS: Product[] = [
     fit: "relaxed",
     fabric: "Cotton–linen slub jersey",
     weight: "180 gsm",
-    description: "Breathable slub jersey cut boxy and slightly cropped for hot days and easy layering.",
+    description:
+      "Breathable slub jersey cut boxy and slightly cropped for hot days and easy layering.",
     details: ["Boxy, cropped cut", "Linen blend", "Side vents", "Tonal stitching"],
   },
   {
@@ -100,7 +101,8 @@ export const PRODUCTS: Product[] = [
     fit: "oversized",
     fabric: "Brushed-back organic fleece",
     weight: "480 gsm",
-    description: "A heavyweight hoodie with a double-layer hood and a brushed interior that feels like a blanket.",
+    description:
+      "A heavyweight hoodie with a double-layer hood and a brushed interior that feels like a blanket.",
     details: ["Double-layer hood", "Kangaroo pocket", "Flat drawcords", "Ribbed cuffs & hem"],
     badge: "Winter edit",
   },
@@ -116,7 +118,8 @@ export const PRODUCTS: Product[] = [
     fit: "relaxed",
     fabric: "Loopback French terry",
     weight: "520 gsm",
-    description: "Our heaviest hoodie, cut relaxed with a structured hood that stands up on its own.",
+    description:
+      "Our heaviest hoodie, cut relaxed with a structured hood that stands up on its own.",
     details: ["Structured hood", "Hidden phone pocket", "Side-seam gussets", "Garment washed"],
   },
   {
@@ -146,7 +149,8 @@ export const PRODUCTS: Product[] = [
     fit: "oversized",
     fabric: "Brushed organic fleece",
     weight: "460 gsm",
-    description: "Oversized fleece hoodie with a puff-print chest graphic and a cosy brushed interior.",
+    description:
+      "Oversized fleece hoodie with a puff-print chest graphic and a cosy brushed interior.",
     details: ["Puff print", "Oversized fit", "Kangaroo pocket", "Metal-tipped cords"],
     graphic: "NORTH",
     badge: "Limited",
@@ -163,7 +167,8 @@ export const PRODUCTS: Product[] = [
     fit: "relaxed",
     fabric: "Loopback cotton terry",
     weight: "400 gsm",
-    description: "A classic crewneck with a V-stitch insert and wide rib trims, dyed in deep autumn tones.",
+    description:
+      "A classic crewneck with a V-stitch insert and wide rib trims, dyed in deep autumn tones.",
     details: ["V-stitch insert", "Wide ribbing", "Raglan sleeves", "Garment dyed"],
     badge: "Autumn edit",
   },
@@ -194,7 +199,8 @@ export const PRODUCTS: Product[] = [
     fit: "oversized",
     fabric: "Midweight cotton terry",
     weight: "320 gsm",
-    description: "Our signature crew with the تفصيله wordmark — light enough for breezy summer nights.",
+    description:
+      "Our signature crew with the تفصيله wordmark — light enough for breezy summer nights.",
     details: ["Signature print", "Oversized fit", "Midweight", "Unisex sizing"],
     graphic: "تفصيله",
   },

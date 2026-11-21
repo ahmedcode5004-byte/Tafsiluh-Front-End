@@ -1,3 +1,4 @@
+// /* eslint-disable prettier/prettier */
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import { AnimatePresence, motion } from "framer-motion";
@@ -27,12 +28,14 @@ export const Route = createFileRoute("/")({
       { title: "تفصيله — Tees, hoodies & sweatshirts for every season" },
       {
         name: "description",
-        content: "Shop winter, summer and autumn edits of tees, hoodies and sweatshirts in XS–3XL, sized to your own avatar.",
+        content:
+          "Shop winter, summer and autumn edits of tees, hoodies and sweatshirts in XS–3XL, sized to your own avatar.",
       },
       { property: "og:title", content: "تفصيله — Tees, hoodies & sweatshirts for every season" },
       {
         property: "og:description",
-        content: "Seasonal essentials in every size, fitted to your avatar and saved to your digital closet.",
+        content:
+          "Seasonal essentials in every size, fitted to your avatar and saved to your digital closet.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -43,9 +46,21 @@ export const Route = createFileRoute("/")({
 });
 
 const HEROES: Record<Season, { image: string; title: string; line: string }> = {
-  winter: { image: heroWinter, title: "Built for the cold.", line: "Brushed fleece hoodies and heavy crews in snow, glacier and midnight." },
-  summer: { image: heroSummer, title: "Made for the sun.", line: "Boxy heavyweight tees and breezy terry in bone, sand and sea glass." },
-  autumn: { image: heroAutumn, title: "Dressed in ember.", line: "Rust, moss and cocoa — layering pieces for the turning season." },
+  winter: {
+    image: heroWinter,
+    title: "Built for the cold.",
+    line: "Brushed fleece hoodies and heavy crews in snow, glacier and midnight.",
+  },
+  summer: {
+    image: heroSummer,
+    title: "Made for the sun.",
+    line: "Boxy heavyweight tees and breezy terry in bone, sand and sea glass.",
+  },
+  autumn: {
+    image: heroAutumn,
+    title: "Dressed in ember.",
+    line: "Rust, moss and cocoa — layering pieces for the turning season.",
+  },
 };
 const SEASONS: Season[] = ["winter", "summer", "autumn"];
 
@@ -66,7 +81,11 @@ function HomePage() {
             <p className="eyebrow text-season-deep">The {SEASON_LABELS[season]} edit</p>
             <h2 className="mt-2 text-4xl font-semibold md:text-5xl">In season now</h2>
           </div>
-          <Link to="/shop" search={{ season }} className="group flex items-center gap-2 text-sm font-semibold">
+          <Link
+            to="/shop"
+            search={{ season }}
+            className="group flex items-center gap-2 text-sm font-semibold"
+          >
             View all {SEASON_LABELS[season].toLowerCase()}
             <ArrowRight className="size-4 transition group-hover:translate-x-1" />
           </Link>
@@ -162,8 +181,12 @@ function Hero() {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               >
                 <p className="eyebrow text-season">{SEASON_LABELS[season]} 2026</p>
-                <h1 className="mt-3 text-5xl font-semibold leading-[0.95] md:text-7xl lg:text-8xl">{hero.title}</h1>
-                <p className="mt-5 max-w-md text-base text-ink-foreground/80 md:text-lg">{hero.line}</p>
+                <h1 className="mt-3 text-5xl font-semibold leading-[0.95] md:text-7xl lg:text-8xl">
+                  {hero.title}
+                </h1>
+                <p className="mt-5 max-w-md text-base text-ink-foreground/80 md:text-lg">
+                  {hero.line}
+                </p>
               </motion.div>
             </AnimatePresence>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -188,46 +211,6 @@ const QUICK: Array<{ category: Category; color: string; blurb: string }> = [
   { category: "hoodie", color: "#B9CADA", blurb: "From $78" },
   { category: "sweatshirt", color: "#A4502C", blurb: "From $68" },
 ];
-
-const SAMPLE_DESIGN: DesignLayer[] = [
-  { id: "s1", kind: "shape", src: "sun", color: "#F2B23A", x: 50, y: 34, size: 62, rotation: 0 },
-  { id: "s2", kind: "shape", src: "mountain", color: "#FFFFFF", x: 50, y: 60, size: 86, rotation: 0 },
-  { id: "s3", kind: "shape", src: "star", color: "#F2A7B8", x: 80, y: 14, size: 18, rotation: 12 },
-];
-
-function DesignInvite() {
-  return (
-    <section className="container-page mt-6">
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="grid items-center gap-6 overflow-hidden rounded-[2rem] bg-ink p-8 text-ink-foreground md:grid-cols-[1fr_280px] md:p-12"
-      >
-        <div>
-          <p className="eyebrow text-season">New · Design studio</p>
-          <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Design your own tee</h2>
-          <p className="mt-3 max-w-md text-ink-foreground/75">
-            Choose a colour, add graphics or upload your own photo, drag it into place — and we size it to your avatar.
-          </p>
-          <Button asChild variant="season" size="xl" className="mt-7">
-            <Link to="/design">
-              Start designing <ArrowRight />
-            </Link>
-          </Button>
-        </div>
-        <motion.div
-          className="mx-auto w-56 md:w-full"
-          animate={{ rotate: [-3, 3, -3] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <TeeCanvas baseColor="#1F2A44" layers={SAMPLE_DESIGN} />
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-}
 
 function QuickFilters() {
   return (
@@ -270,7 +253,10 @@ function QuickFilters() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               {["XS", "S", "M", "L", "XL", "XXL", "3XL"].map((s) => (
-                <span key={s} className="rounded-full border border-ink-foreground/25 px-2.5 py-1 text-xs font-semibold">
+                <span
+                  key={s}
+                  className="rounded-full border border-ink-foreground/25 px-2.5 py-1 text-xs font-semibold"
+                >
                   {s}
                 </span>
               ))}
@@ -282,11 +268,62 @@ function QuickFilters() {
   );
 }
 
+const SAMPLE_DESIGN: DesignLayer[] = [
+  { id: "s1", kind: "shape", src: "sun", color: "#F2B23A", x: 50, y: 34, size: 62, rotation: 0 },
+  {
+    id: "s2",
+    kind: "shape",
+    src: "mountain",
+    color: "#FFFFFF",
+    x: 50,
+    y: 60,
+    size: 86,
+    rotation: 0,
+  },
+  { id: "s3", kind: "shape", src: "star", color: "#F2A7B8", x: 80, y: 14, size: 18, rotation: 12 },
+];
+
+function DesignInvite() {
+  return (
+    <section className="container-page mt-6">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        className="grid items-center gap-6 overflow-hidden rounded-[2rem] bg-ink p-8 text-ink-foreground md:grid-cols-[1fr_280px] md:p-12"
+      >
+        <div>
+          <p className="eyebrow text-season">New · Design studio</p>
+          <h2 className="mt-3 text-4xl font-semibold md:text-5xl">Design your own tee</h2>
+          <p className="mt-3 max-w-md text-ink-foreground/75">
+            Choose a colour, add graphics or upload your own photo, drag it into place — and we size
+            it to your avatar.
+          </p>
+          <Button asChild variant="season" size="xl" className="mt-7">
+            <Link to="/design">
+              Start designing <ArrowRight />
+            </Link>
+          </Button>
+        </div>
+        <motion.div
+          className="mx-auto w-56 md:w-full"
+          animate={{ rotate: [-3, 3, -3] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <TeeCanvas baseColor="#1F2A44" layers={SAMPLE_DESIGN} />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
 const SHOWCASE: AvatarGarment[] = [
   { key: "a", category: "hoodie", color: { name: "Glacier", hex: "#B9CADA" } },
   { key: "b", category: "tshirt", color: { name: "Sun", hex: "#E7AE47" }, graphic: "تفصيله" },
   { key: "c", category: "sweatshirt", color: { name: "Rust", hex: "#A4502C" } },
 ];
+
 const SHOWCASE_BODIES = [
   DEFAULT_MEASUREMENTS,
   { height: 162, weight: 58, shoulder: 39, chest: 86, waist: 68, hips: 96 },
@@ -306,10 +343,12 @@ function AvatarFeature() {
       <div className="grid overflow-hidden rounded-[2.5rem] bg-ink-gradient text-ink-foreground lg:grid-cols-2">
         <div className="flex flex-col justify-center p-8 md:p-14">
           <p className="eyebrow text-season">Avatar fit engine</p>
-          <h2 className="mt-3 text-4xl font-semibold leading-tight md:text-6xl">Your body. Your avatar. Your size.</h2>
+          <h2 className="mt-3 text-4xl font-semibold leading-tight md:text-6xl">
+            Your body. Your avatar. Your size.
+          </h2>
           <p className="mt-5 max-w-md text-ink-muted">
-            Enter six measurements once. Your avatar morphs to match, recommends a size for every piece, and wears what you
-            buy.
+            Enter six measurements once. Your avatar morphs to match, recommends a size for every
+            piece, and wears what you buy.
           </p>
           <ul className="mt-8 grid gap-4 sm:grid-cols-3">
             {[
@@ -317,7 +356,10 @@ function AvatarFeature() {
               { icon: Sparkles, t: "Morph", d: "Watch your avatar reshape in real time." },
               { icon: Shirt, t: "Wear", d: "Delivered pieces unlock in your closet." },
             ].map(({ icon: Icon, t, d }) => (
-              <li key={t} className="rounded-2xl bg-ink-foreground/5 p-4 ring-1 ring-ink-foreground/10">
+              <li
+                key={t}
+                className="rounded-2xl bg-ink-foreground/5 p-4 ring-1 ring-ink-foreground/10"
+              >
                 <Icon className="size-5 text-season" />
                 <p className="mt-3 font-semibold">{t}</p>
                 <p className="mt-1 text-xs text-ink-muted">{d}</p>
@@ -326,14 +368,20 @@ function AvatarFeature() {
           </ul>
           <div className="mt-10">
             <Button asChild variant="on-ink" size="xl">
-              <Link to="/account/avatar">{user?.avatar ? "Open avatar studio" : "Create my avatar"}</Link>
+              <Link to="/account/avatar">
+                {user?.avatar ? "Open avatar studio" : "Create my avatar"}
+              </Link>
             </Button>
           </div>
         </div>
         <div className="relative min-h-[460px] bg-ink-foreground/5">
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-season/25 to-transparent" />
           <div className="relative mx-auto h-[520px] max-w-sm py-8">
-            <AvatarFigure measurements={SHOWCASE_BODIES[i]!} look={DEFAULT_LOOK} garment={SHOWCASE[i]!} />
+            <AvatarFigure
+              measurements={SHOWCASE_BODIES[i]!}
+              look={DEFAULT_LOOK}
+              garment={SHOWCASE[i]!}
+            />
           </div>
         </div>
       </div>
@@ -374,7 +422,16 @@ function Community() {
                   <AvatarFigure
                     measurements={p.avatar.measurements}
                     look={p.avatar.look}
-                    garment={worn ? { key: worn.key, category: worn.category, color: worn.color, graphic: worn.graphic } : null}
+                    garment={
+                      worn
+                        ? {
+                            key: worn.key,
+                            category: worn.category,
+                            color: worn.color,
+                            graphic: worn.graphic,
+                          }
+                        : null
+                    }
                     idle={false}
                   />
                 </div>
@@ -382,7 +439,8 @@ function Community() {
                   <p className="font-display text-xl font-semibold">{p.displayName}</p>
                   <p className="text-sm text-muted-foreground">@{p.username}</p>
                   <p className="mt-3 text-xs font-semibold">
-                    {p.closet.length} pieces unlocked <ArrowRight className="inline size-3 transition group-hover:translate-x-1" />
+                    {p.closet.length} pieces unlocked{" "}
+                    <ArrowRight className="inline size-3 transition group-hover:translate-x-1" />
                   </p>
                 </div>
               </Link>

@@ -71,8 +71,9 @@ export interface FitChoice {
 }
 
 export type DesignLayerKind = "shape" | "image";
+export type PrintZone = "front" | "back" | "left-sleeve" | "right-sleeve";
 
-/** One graphic placed on a custom tee. Position and size are % of the print area. */
+/** One graphic placed on a custom garment. Position and size are % of the print area. */
 export interface DesignLayer {
   id: string;
   kind: DesignLayerKind;
@@ -84,11 +85,15 @@ export interface DesignLayer {
   y: number;
   size: number;
   rotation: number;
+  /** Print location. Existing designs default to the front. */
+  zone?: PrintZone;
 }
 
 export interface CustomDesign {
   id: string;
   baseColor: ProductColor;
+  /** Garment chosen for this custom design. */
+  garmentCategory?: Category;
   layers: DesignLayer[];
 }
 

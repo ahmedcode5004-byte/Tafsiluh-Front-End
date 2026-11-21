@@ -25,7 +25,10 @@ let getToken: () => string | null = () => null;
 let onUnauthorized: () => void = () => {};
 
 /** Wire the auth store into the client once (see src/store/auth.ts). */
-export function configureApiClient(opts: { getToken: () => string | null; onUnauthorized?: () => void }) {
+export function configureApiClient(opts: {
+  getToken: () => string | null;
+  onUnauthorized?: () => void;
+}) {
   getToken = opts.getToken;
   if (opts.onUnauthorized) onUnauthorized = opts.onUnauthorized;
 }

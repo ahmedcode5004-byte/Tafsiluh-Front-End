@@ -10,6 +10,7 @@ export const productsService = {
     if (USE_MOCKS) return PRODUCTS;
     return api.get<Product[]>(ENDPOINTS.products.list);
   },
+
   async getBySlug(slug: string): Promise<Product | null> {
     if (USE_MOCKS) return PRODUCTS.find((p) => p.slug === slug) ?? null;
     return api.get<Product>(ENDPOINTS.products.bySlug(slug));
@@ -17,7 +18,11 @@ export const productsService = {
 };
 
 export const productsQuery = () =>
-  queryOptions({ queryKey: ["products"], queryFn: () => productsService.list(), staleTime: 60_000 });
+  queryOptions({
+    queryKey: ["products"],
+    queryFn: () => productsService.list(),
+    staleTime: 60_000,
+  });
 
 export const productQuery = (slug: string) =>
   queryOptions({

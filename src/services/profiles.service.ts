@@ -14,6 +14,7 @@ export const profilesService = {
       throw e;
     }
   },
+
   listFeatured(): PublicProfile[] {
     return COMMUNITY_PROFILES;
   },

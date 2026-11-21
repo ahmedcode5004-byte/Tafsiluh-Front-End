@@ -1,14 +1,16 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import type { DesignLayer, ProductColor } from "@/types";
+import type { Category, DesignLayer, ProductColor } from "@/types";
 import { TEE_COLORS } from "@/data/designer";
 import { uid } from "@/lib/format";
 import { browserStorage } from "./storage";
 
 interface DesignState {
   baseColor: ProductColor;
+  garmentCategory: Category;
   layers: DesignLayer[];
   setColor: (c: ProductColor) => void;
+  setCategory: (category: Category) => void;
   addLayer: (layer: Omit<DesignLayer, "id">) => string;
   updateLayer: (id: string, patch: Partial<DesignLayer>) => void;
   removeLayer: (id: string) => void;
@@ -23,8 +25,10 @@ export const useDesignStore = create<DesignState>()(
   persist(
     (set, get) => ({
       baseColor: TEE_COLORS[0]!,
+      garmentCategory: "tshirt",
       layers: [],
       setColor: (baseColor) => set({ baseColor }),
+      setCategory: (garmentCategory) => set({ garmentCategory }),
       addLayer: (layer) => {
         const id = uid("layer");
         set((s) => ({ layers: [...s.layers, { ...layer, id }] }));
@@ -36,7 +40,12 @@ export const useDesignStore = create<DesignState>()(
       duplicateLayer: (id) => {
         const src = get().layers.find((l) => l.id === id);
         if (!src) return null;
-        const copy = { ...src, id: uid("layer"), x: Math.min(100, src.x + 6), y: Math.min(100, src.y + 6) };
+        const copy = {
+          ...src,
+          id: uid("layer"),
+          x: Math.min(100, src.x + 6),
+          y: Math.min(100, src.y + 6),
+        };
         set((s) => ({ layers: [...s.layers, copy] }));
         return copy.id;
       },
@@ -49,7 +58,7 @@ export const useDesignStore = create<DesignState>()(
           [layers[i], layers[j]] = [layers[j]!, layers[i]!];
           return { layers };
         }),
-      reset: () => set({ baseColor: TEE_COLORS[0]!, layers: [] }),
+      reset: () => set({ baseColor: TEE_COLORS[0]!, garmentCategory: "tshirt", layers: [] }),
     }),
     { name: "solstice.design", storage: browserStorage, skipHydration: true },
   ),

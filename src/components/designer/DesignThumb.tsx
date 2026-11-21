@@ -14,6 +14,14 @@ export function DesignThumb({
   color: string;
   graphic?: string | undefined;
 }) {
-  if (design) return <TeeCanvas baseColor={design.baseColor.hex} layers={design.layers} />;
+  if (design)
+    return (
+      <TeeCanvas
+        baseColor={design.baseColor.hex}
+        category={design.garmentCategory ?? category}
+        zone="front"
+        layers={design.layers}
+      />
+    );
   return <GarmentArt category={category} color={color} graphic={graphic} />;
 }

@@ -52,11 +52,19 @@ export function AuthModal() {
         <AnimatePresence mode="wait" initial={false}>
           {authView === "login" ? (
             <motion.div key="login" {...fade}>
-              <LoginForm reason={authReason} onDone={finish} onSwitch={() => openAuth("signup", authReason)} />
+              <LoginForm
+                reason={authReason}
+                onDone={finish}
+                onSwitch={() => openAuth("signup", authReason)}
+              />
             </motion.div>
           ) : step === "details" ? (
             <motion.div key="signup" {...fade}>
-              <SignupForm reason={authReason} onDone={() => setStep("avatar")} onSwitch={() => openAuth("login", authReason)} />
+              <SignupForm
+                reason={authReason}
+                onDone={() => setStep("avatar")}
+                onSwitch={() => openAuth("login", authReason)}
+              />
             </motion.div>
           ) : (
             <motion.div key="avatar" {...fade}>
@@ -76,7 +84,11 @@ const fade = {
   transition: { duration: 0.28 },
 };
 
-function Field({ label, error, ...props }: { label: string; error?: string | undefined } & React.ComponentProps<"input">) {
+function Field({
+  label,
+  error,
+  ...props
+}: { label: string; error?: string | undefined } & React.ComponentProps<"input">) {
   return (
     <label className="block">
       <span className="text-sm font-semibold">{label}</span>
@@ -86,7 +98,15 @@ function Field({ label, error, ...props }: { label: string; error?: string | und
   );
 }
 
-function Header({ eyebrow, title, reason }: { eyebrow: string; title: string; reason: string | null }) {
+function Header({
+  eyebrow,
+  title,
+  reason,
+}: {
+  eyebrow: string;
+  title: string;
+  reason: string | null;
+}) {
   return (
     <div className="pr-10">
       <p className="eyebrow text-season-deep">{eyebrow}</p>
@@ -96,7 +116,15 @@ function Header({ eyebrow, title, reason }: { eyebrow: string; title: string; re
   );
 }
 
-function LoginForm({ reason, onDone, onSwitch }: { reason: string | null; onDone: () => void; onSwitch: () => void }) {
+function LoginForm({
+  reason,
+  onDone,
+  onSwitch,
+}: {
+  reason: string | null;
+  onDone: () => void;
+  onSwitch: () => void;
+}) {
   const login = useAuthStore((s) => s.login);
   const [errors, setErrors] = useState<Errors>({});
   const [busy, setBusy] = useState(false);
@@ -113,7 +141,10 @@ function LoginForm({ reason, onDone, onSwitch }: { reason: string | null; onDone
     try {
       const user = await login(parsed.data.email, parsed.data.password);
       onDone();
-      void alertSuccess(`Welcome back, ${user.firstName}`, "Your bag, avatar and closet are ready.");
+      void alertSuccess(
+        `Welcome back, ${user.firstName}`,
+        "Your bag, avatar and closet are ready.",
+      );
     } catch (err) {
       setErrors({ form: err instanceof Error ? err.message : "Could not sign in." });
     } finally {
@@ -125,14 +156,28 @@ function LoginForm({ reason, onDone, onSwitch }: { reason: string | null; onDone
     <form onSubmit={submit} noValidate className="space-y-5">
       <Header eyebrow="Members" title="Sign in" reason={reason} />
       <Field label="Email" name="email" type="email" autoComplete="email" error={errors["email"]} />
-      <Field label="Password" name="password" type="password" autoComplete="current-password" error={errors["password"]} />
-      {errors["form"] && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">{errors["form"]}</p>}
+      <Field
+        label="Password"
+        name="password"
+        type="password"
+        autoComplete="current-password"
+        error={errors["password"]}
+      />
+      {errors["form"] && (
+        <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
+          {errors["form"]}
+        </p>
+      )}
       <Button variant="pill" size="lg" className="w-full" disabled={busy}>
         {busy ? "Signing in…" : "Sign in"}
       </Button>
       <p className="text-center text-sm text-muted-foreground">
         New here?{" "}
-        <button type="button" onClick={onSwitch} className="font-semibold text-foreground underline underline-offset-4">
+        <button
+          type="button"
+          onClick={onSwitch}
+          className="font-semibold text-foreground underline underline-offset-4"
+        >
           Create an account
         </button>
       </p>
@@ -140,7 +185,15 @@ function LoginForm({ reason, onDone, onSwitch }: { reason: string | null; onDone
   );
 }
 
-function SignupForm({ reason, onDone, onSwitch }: { reason: string | null; onDone: () => void; onSwitch: () => void }) {
+function SignupForm({
+  reason,
+  onDone,
+  onSwitch,
+}: {
+  reason: string | null;
+  onDone: () => void;
+  onSwitch: () => void;
+}) {
   const register = useAuthStore((s) => s.register);
   const [errors, setErrors] = useState<Errors>({});
   const [busy, setBusy] = useState(false);
@@ -174,19 +227,50 @@ function SignupForm({ reason, onDone, onSwitch }: { reason: string | null; onDon
     <form onSubmit={submit} noValidate className="space-y-4">
       <Header eyebrow="Step 1 of 2" title="Create your account" reason={reason} />
       <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="First name" name="firstName" autoComplete="given-name" error={errors["firstName"]} />
-        <Field label="Last name" name="lastName" autoComplete="family-name" error={errors["lastName"]} />
+        <Field
+          label="First name"
+          name="firstName"
+          autoComplete="given-name"
+          error={errors["firstName"]}
+        />
+        <Field
+          label="Last name"
+          name="lastName"
+          autoComplete="family-name"
+          error={errors["lastName"]}
+        />
       </div>
       <Field label="Email" name="email" type="email" autoComplete="email" error={errors["email"]} />
-      <Field label="Phone number" name="phone" type="tel" autoComplete="tel" placeholder="+20 100 000 0000" error={errors["phone"]} />
-      <Field label="Password" name="password" type="password" autoComplete="new-password" error={errors["password"]} />
-      {errors["form"] && <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">{errors["form"]}</p>}
+      <Field
+        label="Phone number"
+        name="phone"
+        type="tel"
+        autoComplete="tel"
+        placeholder="+20 100 000 0000"
+        error={errors["phone"]}
+      />
+      <Field
+        label="Password"
+        name="password"
+        type="password"
+        autoComplete="new-password"
+        error={errors["password"]}
+      />
+      {errors["form"] && (
+        <p className="rounded-xl bg-destructive/10 px-4 py-3 text-sm font-medium text-destructive">
+          {errors["form"]}
+        </p>
+      )}
       <Button variant="pill" size="lg" className="w-full" disabled={busy}>
         {busy ? "Creating account…" : "Continue"}
       </Button>
       <p className="text-center text-sm text-muted-foreground">
         Already a member?{" "}
-        <button type="button" onClick={onSwitch} className="font-semibold text-foreground underline underline-offset-4">
+        <button
+          type="button"
+          onClick={onSwitch}
+          className="font-semibold text-foreground underline underline-offset-4"
+        >
           Sign in
         </button>
       </p>
@@ -199,7 +283,11 @@ function AvatarStep({ onDone }: { onDone: () => void }) {
   const [saving, setSaving] = useState(false);
   return (
     <div>
-      <Header eyebrow="Step 2 of 2" title="Build your avatar" reason="Enter your measurements once — we'll use them to size every order." />
+      <Header
+        eyebrow="Step 2 of 2"
+        title="Build your avatar"
+        reason="Enter your measurements once — we'll use them to size every order."
+      />
       <div className="mt-6">
         <AvatarStudio
           saving={saving}

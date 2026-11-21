@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import type { ProductColor } from "@/types";
 
 export const TEE_COLORS: ProductColor[] = [
